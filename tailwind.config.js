@@ -1,0 +1,108 @@
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: [
+    "./index.html",
+    "./src/**/*.{js,ts,jsx,tsx}",
+  ],
+  theme: {
+    extend: {
+      colors: {
+        brand: {
+          navy: "#10152D",
+          slate: "#626B85",
+          cyan: "#00E5FF",
+          pink: "#FF1493",
+          purple: "#8B00FF",
+          blue: "#0080FF",
+        },
+        kaarya: {
+          purple: '#8B3DFF',
+          pink: '#F33DBD',
+          navy: '#151B3D',
+          lavender: '#F5F0FF',
+          bg: '#FCFAFF',
+          cyan: '#BDF7F5',
+        },
+        primary: {
+          DEFAULT: '#8B3DFF',
+          hover: '#782FE0',
+          light: '#F5F0FF',
+          container: '#e11d74',
+          fixed: '#ffd9e1',
+          'fixed-dim': '#ffb1c5',
+        },
+        secondary: {
+          DEFAULT: '#F33DBD',
+          hover: '#DD2AA7',
+          container: '#5563f7',
+          fixed: '#e0e0ff',
+          'fixed-dim': '#bdc2ff',
+        },
+        tertiary: {
+          DEFAULT: '#6d3ad6',
+          container: '#8657f1',
+          fixed: '#e9ddff',
+          'fixed-dim': '#d0bcff',
+        },
+        surface: {
+          DEFAULT: '#f8f9ff',
+          bright: '#f8f9ff',
+          dim: '#cbdbf5',
+          'container-lowest': '#ffffff',
+          'container-low': '#eff4ff',
+          container: '#e5eeff',
+          'container-high': '#dce9ff',
+          'container-highest': '#d3e4fe',
+        },
+        'on-surface': '#0b1c30',
+        'on-surface-variant': '#5a4046',
+        'outline': '#8e6f76',
+        'outline-variant': '#e2bdc5',
+        'on-primary': '#ffffff',
+        'on-secondary': '#ffffff',
+        'on-tertiary': '#ffffff',
+        navy: {
+          DEFAULT: '#151B3D',
+          light: '#242C5B',
+          dark: '#0D1126',
+        },
+        cyan: {
+          soft: '#BDF7F5',
+        },
+      },
+      fontFamily: {
+        sans: [
+          'Inter',
+          '-apple-system',
+          'BlinkMacSystemFont',
+          'Segoe UI',
+          'Roboto',
+          'sans-serif',
+        ],
+        display: [
+          'Plus Jakarta Sans',
+          'Inter',
+          '-apple-system',
+          'sans-serif',
+        ],
+        'body-md': ['Inter', 'sans-serif'],
+        'headline-lg': ['Plus Jakarta Sans', 'sans-serif'],
+        'headline-md': ['Plus Jakarta Sans', 'sans-serif'],
+        'headline-sm': ['Plus Jakarta Sans', 'sans-serif'],
+        'label-lg': ['Plus Jakarta Sans', 'sans-serif'],
+        'label-md': ['Plus Jakarta Sans', 'sans-serif'],
+        'label-sm': ['Plus Jakarta Sans', 'sans-serif'],
+      },
+      spacing: {
+        '13': '3.25rem',
+      },
+      boxShadow: {
+        'glass': '0 8px 32px 0 rgba(115, 80, 210, 0.08), 0 1px 3px 0 rgba(0, 0, 0, 0.03)',
+        'glass-lg': '0 20px 48px -12px rgba(80, 35, 180, 0.12), 0 1px 4px 0 rgba(0,0,0,0.04)',
+        'aurora-glow': '0 12px 36px -6px rgba(255, 20, 147, 0.28), 0 4px 14px -2px rgba(0, 128, 255, 0.22)',
+        'aurora-glow-sm': '0 4px 20px -2px rgba(139, 0, 255, 0.2)',
+      },
+    },
+  },
+  plugins: [],
+};

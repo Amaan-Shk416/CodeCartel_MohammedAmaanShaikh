@@ -1,0 +1,1179 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="web_standard" name="shell-type"/>
+<title>Kaarya — Find Verified Professionals</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#b9005c",
+            "primary-container": "#e11d74",
+            "primary-fixed": "#ffd9e1",
+            "primary-fixed-dim": "#ffb1c5",
+            "secondary": "#3947dd",
+            "secondary-container": "#5563f7",
+            "secondary-fixed": "#e0e0ff",
+            "secondary-fixed-dim": "#bdc2ff",
+            "tertiary": "#6d3ad6",
+            "tertiary-container": "#8657f1",
+            "tertiary-fixed": "#e9ddff",
+            "tertiary-fixed-dim": "#d0bcff",
+            "background": "#f8f9ff",
+            "surface": "#f8f9ff",
+            "surface-bright": "#f8f9ff",
+            "surface-dim": "#cbdbf5",
+            "surface-container-lowest": "#ffffff",
+            "surface-container-low": "#eff4ff",
+            "surface-container": "#e5eeff",
+            "surface-container-high": "#dce9ff",
+            "surface-container-highest": "#d3e4fe",
+            "on-surface": "#0b1c30",
+            "on-surface-variant": "#5a4046",
+            "outline": "#8e6f76",
+            "outline-variant": "#e2bdc5",
+            "on-primary": "#ffffff",
+            "on-secondary": "#ffffff",
+            "on-tertiary": "#ffffff"
+          },
+          fontFamily: {
+            "body-md": ["Inter", "sans-serif"],
+            "headline-lg": ["Plus Jakarta Sans", "sans-serif"],
+            "headline-md": ["Plus Jakarta Sans", "sans-serif"],
+            "headline-sm": ["Plus Jakarta Sans", "sans-serif"],
+            "label-lg": ["Plus Jakarta Sans", "sans-serif"],
+            "label-md": ["Plus Jakarta Sans", "sans-serif"],
+            "label-sm": ["Plus Jakarta Sans", "sans-serif"]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    @layer base {
+      html, body { margin: 0; padding: 0; }
+      body { overscroll-behavior: none; }
+    }
+    ::-webkit-scrollbar { display: none; }
+    .aurora-gradient-btn {
+      background: linear-gradient(135deg, #FF1493 0%, #8B00FF 52%, #0080FF 100%);
+    }
+    .aurora-pill-active {
+      background: linear-gradient(135deg, #FF1493 0%, #8B00FF 50%, #0080FF 100%);
+    }
+    .aurora-border-glow:hover {
+      box-shadow: 0 16px 36px -8px rgba(139, 0, 255, 0.16), 0 4px 18px -2px rgba(255, 20, 147, 0.12);
+    }
+  </style>
+</head>
+<body class="bg-background font-body-md text-on-surface antialiased selection:bg-primary-fixed selection:text-primary">
+<!-- TOP HEADER (Floating Frosted Glass Desktop Header) -->
+<header class="fixed top-0 left-0 right-0 z-50 bg-surface-container-lowest/85 backdrop-blur-xl border-b border-surface-container-high/60 shadow-[0_12px_32px_-4px_rgba(59,73,223,0.06),0_4px_12px_-2px_rgba(225,29,116,0.04)]">
+<div class="h-20 max-w-[1280px] mx-auto px-6 lg:px-8 flex items-center justify-between gap-4">
+<!-- Logo + Nav Links -->
+<div class="flex items-center gap-8">
+<a class="flex items-center gap-2.5 group" data-path="home" href="#">
+<div class="w-10 h-10 rounded-xl aurora-gradient-btn flex items-center justify-center text-white shadow-[0_4px_16px_rgba(225,29,116,0.28)] transition-transform group-hover:scale-105">
+<span class="material-symbols-outlined text-[22px]">handyman</span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-sm text-[20px] font-extrabold text-on-surface tracking-tight leading-none group-hover:text-primary transition-colors">Kaarya</span>
+<span class="font-label-sm text-[9.5px] uppercase font-bold text-on-surface-variant tracking-wider leading-tight mt-0.5">Where Skills Meet Opportunity</span>
+</div>
+</a>
+<nav class="hidden xl:flex items-center gap-1.5 p-1 rounded-full bg-surface-container-low/80">
+<a class="px-4 py-2 rounded-full font-label-lg text-[13px] text-on-surface-variant hover:text-on-surface transition-all" data-path="home" href="#">Home</a>
+<a aria-current="page" class="px-4 py-2 rounded-full font-label-lg text-[13px] transition-all aurora-pill-active text-white font-bold shadow-[0_4px_14px_rgba(225,29,116,0.25)]" data-path="find-professionals" href="#">Find Professionals</a>
+<a class="px-4 py-2 rounded-full font-label-lg text-[13px] text-on-surface-variant hover:text-on-surface transition-all" data-path="how-it-works" href="#">How It Works</a>
+<a class="px-4 py-2 rounded-full font-label-lg text-[13px] text-on-surface-variant hover:text-on-surface transition-all" data-path="for-workers" href="#">For Workers</a>
+<a class="px-4 py-2 rounded-full font-label-lg text-[13px] text-on-surface-variant hover:text-on-surface transition-all" data-path="about" href="#">About</a>
+</nav>
+</div>
+<!-- Right Toolbar: Search, Location, Alerts, Avatar -->
+<div class="flex items-center gap-3">
+<div class="hidden lg:flex items-center h-10 px-3.5 rounded-full bg-surface-container-low hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-secondary text-[20px] mr-2">search</span>
+<input class="bg-transparent border-none outline-none font-body-sm text-[13px] text-on-surface placeholder:text-on-surface-variant w-40 focus:w-52 transition-all" placeholder="Quick search..." type="text"/>
+</div>
+<div class="hidden sm:flex items-center gap-1.5 h-10 px-3.5 rounded-full bg-surface-container-lowest border border-surface-container shadow-sm">
+<span class="material-symbols-outlined text-primary text-[18px]">location_on</span>
+<span class="font-label-md text-[13px] text-on-surface font-semibold">Mumbai, MH</span>
+</div>
+<button aria-label="Notifications" class="relative w-10 h-10 rounded-full bg-surface-container-low hover:bg-surface-container flex items-center justify-center text-on-surface-variant transition-colors" type="button">
+<span class="material-symbols-outlined text-[20px]">notifications</span>
+<span class="absolute top-2.5 right-2.5 w-2 h-2 rounded-full bg-primary ring-2 ring-surface-container-lowest"></span>
+</button>
+<a class="flex items-center" data-path="worker-profile" href="#">
+<div class="w-9 h-9 rounded-full bg-gradient-to-tr from-secondary to-tertiary flex items-center justify-center text-white ring-2 ring-white shadow-sm font-label-md text-xs font-bold">
+            KP
+          </div>
+</a>
+</div>
+</div>
+</header>
+<!-- MAIN WRAPPER -->
+<main class="w-full pt-28 pb-16 bg-background min-h-screen relative overflow-hidden">
+<!-- Ambient Aurora Glow Backdrops -->
+<div class="pointer-events-none absolute -top-40 left-1/3 w-[650px] h-[650px] rounded-full bg-gradient-to-tr from-[#FF1493]/10 via-[#8B00FF]/12 to-[#0080FF]/10 blur-[130px] -z-10"></div>
+<div class="pointer-events-none absolute top-[500px] -right-28 w-[500px] h-[500px] rounded-full bg-gradient-to-br from-[#0080FF]/10 via-[#8B00FF]/8 to-[#FF1493]/10 blur-[140px] -z-10"></div>
+<div class="pointer-events-none absolute bottom-20 -left-20 w-[550px] h-[550px] rounded-full bg-gradient-to-tr from-tertiary/10 via-primary/8 to-secondary/10 blur-[120px] -z-10"></div>
+<div class="max-w-[1280px] w-full mx-auto px-6 lg:px-8 flex flex-col gap-6">
+<!-- 1. PAGE TITLE & COMPACT INTRO -->
+<section class="flex flex-col items-center text-center max-w-3xl mx-auto pt-2">
+<h1 class="font-headline-lg text-[34px] sm:text-[40px] font-extrabold text-on-surface tracking-tight leading-tight">
+          Find the Right Professional for Your Needs
+        </h1>
+<p class="font-body-md text-on-surface-variant text-[15px] sm:text-[16px] mt-2">
+          Discover skilled local professionals, compare services, and find the right person for your job.
+        </p>
+</section>
+<!-- 2. SINGLE WIDE HORIZONTAL SEARCH BAR -->
+<div class="w-full max-w-4xl mx-auto">
+<div class="relative rounded-2xl bg-surface-container-lowest/90 backdrop-blur-xl p-2.5 sm:p-3 border border-surface-container-high shadow-[0_12px_36px_-6px_rgba(59,73,223,0.08),0_4px_16px_-2px_rgba(225,29,116,0.05)]">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-2 items-center">
+<!-- Service search input -->
+<div class="md:col-span-6 flex items-center h-12 px-4 rounded-xl bg-surface-container-low/70 focus-within:bg-white focus-within:ring-2 focus-within:ring-tertiary/30 transition-all">
+<span class="material-symbols-outlined text-secondary text-[22px] mr-3 shrink-0">search</span>
+<input class="w-full bg-transparent border-none outline-none font-body-md text-[14px] text-on-surface placeholder:text-on-surface-variant/80" placeholder="Plumber, Electrician, Deep Cleaning, Painter..." type="text" value="Plumber, Electrician, Deep Cleaning"/>
+</div>
+<!-- Location selector -->
+<div class="md:col-span-3 flex items-center justify-between h-12 px-3.5 rounded-xl bg-surface-container-low/70 hover:bg-surface-container transition-colors cursor-pointer">
+<div class="flex items-center gap-2 min-w-0">
+<span class="material-symbols-outlined text-primary text-[20px] shrink-0">location_on</span>
+<span class="font-label-md text-[13px] font-semibold text-on-surface truncate">Mumbai, Maharashtra</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant text-[18px]">expand_more</span>
+</div>
+<!-- Aurora Gradient Search Button -->
+<div class="md:col-span-3">
+<button class="w-full h-12 px-6 rounded-xl aurora-gradient-btn hover:opacity-95 text-white font-label-lg text-[14px] font-bold flex items-center justify-center gap-2 shadow-[0_8px_20px_rgba(225,29,116,0.28)] transition-transform active:scale-[0.98]" type="button">
+<span class="material-symbols-outlined text-[20px]">search</span>
+<span>Search Pros</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Category selector chips row -->
+<div class="w-full overflow-x-auto pb-1 mt-3.5 no-scrollbar">
+<div class="flex items-center gap-2 justify-start md:justify-center min-w-max">
+<button class="px-4 py-2 rounded-full aurora-pill-active text-white font-label-md text-[13px] font-bold shadow-[0_4px_12px_rgba(225,29,116,0.2)] flex items-center gap-1.5" type="button">
+<span class="material-symbols-outlined text-[16px]">apps</span>
+<span>All Services</span>
+</button>
+<button class="px-4 py-2 rounded-full bg-surface-container-lowest/90 hover:bg-white text-on-surface border border-surface-container font-label-md text-[13px] font-medium flex items-center gap-1.5 transition-all hover:text-primary hover:border-primary/30" type="button">
+<span class="material-symbols-outlined text-[17px] text-secondary">plumbing</span>
+<span>Plumbing</span>
+</button>
+<button class="px-4 py-2 rounded-full bg-surface-container-lowest/90 hover:bg-white text-on-surface border border-surface-container font-label-md text-[13px] font-medium flex items-center gap-1.5 transition-all hover:text-primary hover:border-primary/30" type="button">
+<span class="material-symbols-outlined text-[17px] text-amber-500">electrical_services</span>
+<span>Electrical</span>
+</button>
+<button class="px-4 py-2 rounded-full bg-surface-container-lowest/90 hover:bg-white text-on-surface border border-surface-container font-label-md text-[13px] font-medium flex items-center gap-1.5 transition-all hover:text-primary hover:border-primary/30" type="button">
+<span class="material-symbols-outlined text-[17px] text-emerald-600">cleaning_services</span>
+<span>Cleaning</span>
+</button>
+<button class="px-4 py-2 rounded-full bg-surface-container-lowest/90 hover:bg-white text-on-surface border border-surface-container font-label-md text-[13px] font-medium flex items-center gap-1.5 transition-all hover:text-primary hover:border-primary/30" type="button">
+<span class="material-symbols-outlined text-[17px] text-primary">format_paint</span>
+<span>Painting</span>
+</button>
+<button class="px-4 py-2 rounded-full bg-surface-container-lowest/90 hover:bg-white text-on-surface border border-surface-container font-label-md text-[13px] font-medium flex items-center gap-1.5 transition-all hover:text-primary hover:border-primary/30" type="button">
+<span class="material-symbols-outlined text-[17px] text-amber-700">carpenter</span>
+<span>Carpentry</span>
+</button>
+<button class="px-4 py-2 rounded-full bg-surface-container-lowest/90 hover:bg-white text-on-surface border border-surface-container font-label-md text-[13px] font-medium flex items-center gap-1.5 transition-all hover:text-primary hover:border-primary/30" type="button">
+<span class="material-symbols-outlined text-[17px] text-tertiary">home_repair_service</span>
+<span>Appliance Repair</span>
+</button>
+<button class="px-4 py-2 rounded-full bg-surface-container-lowest/90 hover:bg-white text-on-surface border border-surface-container font-label-md text-[13px] font-medium flex items-center gap-1.5 transition-all hover:text-primary hover:border-primary/30" type="button">
+<span class="material-symbols-outlined text-[17px] text-secondary">local_shipping</span>
+<span>Moving</span>
+</button>
+</div>
+</div>
+</div>
+<!-- 3. COMPACT SLEEK HORIZONTAL FILTER TOOLBAR (Replaces old sidebar) -->
+<section class="rounded-2xl bg-surface-container-lowest/85 backdrop-blur-xl border border-surface-container-high/70 p-4 shadow-[0_4px_20px_-2px_rgba(99,102,241,0.04)]">
+<div class="flex flex-wrap items-center justify-between gap-3">
+<!-- Filter dropdowns row -->
+<div class="flex flex-wrap items-center gap-2">
+<!-- Category dropdown -->
+<div class="relative">
+<select class="appearance-none bg-surface-container-low/70 hover:bg-surface-container pl-3 pr-8 py-2 rounded-xl text-on-surface font-label-md text-[13px] font-semibold border-none outline-none cursor-pointer transition-colors">
+<option>All Categories</option>
+<option>Plumbing</option>
+<option>Electrical</option>
+<option>Deep Cleaning</option>
+<option>Carpentry</option>
+<option>Painting</option>
+</select>
+<span class="material-symbols-outlined absolute right-2 top-2.5 text-[18px] text-on-surface-variant pointer-events-none">expand_more</span>
+</div>
+<!-- Distance dropdown -->
+<div class="relative">
+<select class="appearance-none bg-surface-container-low/70 hover:bg-surface-container pl-3 pr-8 py-2 rounded-xl text-on-surface font-label-md text-[13px] font-semibold border-none outline-none cursor-pointer transition-colors">
+<option>Distance: Within 5 km</option>
+<option>Distance: Within 2 km</option>
+<option>Distance: Within 10 km</option>
+<option>Distance: Within 25 km</option>
+</select>
+<span class="material-symbols-outlined absolute right-2 top-2.5 text-[18px] text-on-surface-variant pointer-events-none">expand_more</span>
+</div>
+<!-- Price dropdown -->
+<div class="relative">
+<select class="appearance-none bg-surface-container-low/70 hover:bg-surface-container pl-3 pr-8 py-2 rounded-xl text-on-surface font-label-md text-[13px] font-semibold border-none outline-none cursor-pointer transition-colors">
+<option>Price: Any Range</option>
+<option>Under ₹200 / hr</option>
+<option selected="">₹200 – ₹500 / hr</option>
+<option>₹500 – ₹1,000 / hr</option>
+<option>₹1,000+ / hr</option>
+</select>
+<span class="material-symbols-outlined absolute right-2 top-2.5 text-[18px] text-on-surface-variant pointer-events-none">expand_more</span>
+</div>
+<!-- Availability dropdown -->
+<div class="relative">
+<select class="appearance-none bg-surface-container-low/70 hover:bg-surface-container pl-3 pr-8 py-2 rounded-xl text-on-surface font-label-md text-[13px] font-semibold border-none outline-none cursor-pointer transition-colors">
+<option selected="">Available: Today</option>
+<option>Available: Now (Instant)</option>
+<option>Available: This Weekend</option>
+<option>Anytime</option>
+</select>
+<span class="material-symbols-outlined absolute right-2 top-2.5 text-[18px] text-on-surface-variant pointer-events-none">expand_more</span>
+</div>
+<!-- Rating dropdown -->
+<div class="relative">
+<select class="appearance-none bg-surface-container-low/70 hover:bg-surface-container pl-3 pr-8 py-2 rounded-xl text-on-surface font-label-md text-[13px] font-semibold border-none outline-none cursor-pointer transition-colors">
+<option>Rating: 4.5+ Stars</option>
+<option>Rating: 4.0+ Stars</option>
+<option>Rating: Any</option>
+</select>
+<span class="material-symbols-outlined absolute right-2 top-2.5 text-[18px] text-on-surface-variant pointer-events-none">expand_more</span>
+</div>
+<!-- More Filters Button (opens popover/modal) -->
+<button class="flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-surface-container-low/70 hover:bg-surface-container text-on-surface font-label-md text-[13px] font-semibold transition-colors" id="open-more-filters-btn" type="button">
+<span class="material-symbols-outlined text-[18px] text-tertiary">tune</span>
+<span>More Filters</span>
+<span class="w-5 h-5 rounded-full bg-primary-fixed text-primary font-bold text-[11px] flex items-center justify-center">2</span>
+</button>
+</div>
+<!-- Active Filter Chips & Reset -->
+<div class="flex items-center gap-2">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container text-on-surface font-label-sm text-[11px] font-semibold">
+              Within 5 km <button class="hover:text-primary transition-colors text-[13px]">✕</button>
+</span>
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container text-on-surface font-label-sm text-[11px] font-semibold">
+              Available Today <button class="hover:text-primary transition-colors text-[13px]">✕</button>
+</span>
+<button class="font-label-sm text-[12px] font-bold text-primary hover:underline ml-1" type="button">
+              Clear All
+            </button>
+</div>
+</div>
+</section>
+<!-- 4. RESULTS HEADER WITH SORT & VIEW TOGGLES -->
+<section class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-2">
+<div>
+<div class="flex items-center gap-2.5">
+<h2 class="font-headline-md text-[22px] sm:text-[24px] font-bold text-on-surface">Professionals Near You</h2>
+<span class="px-2.5 py-0.5 rounded-full bg-surface-container-low text-secondary font-label-sm text-[11px] font-bold">120 verified professionals</span>
+</div>
+<p class="font-body-sm text-[13px] text-on-surface-variant mt-0.5">Find the right skills for your next job.</p>
+</div>
+<!-- Sort dropdown and interactive Grid/Map View Switcher -->
+<div class="flex items-center gap-3">
+<div class="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-surface-container-lowest border border-surface-container shadow-sm">
+<span class="font-label-sm text-[12px] text-on-surface-variant">Sort:</span>
+<select class="bg-transparent font-label-sm text-[12px] font-bold text-on-surface outline-none cursor-pointer">
+<option selected="">Best Skill Match</option>
+<option>Price: Low to High</option>
+<option>Nearest First</option>
+<option>Available Soon</option>
+<option>Highest Rated</option>
+</select>
+</div>
+<div class="flex items-center p-0.5 rounded-full bg-surface-container-low border border-surface-container">
+<button aria-label="Grid View" class="px-3.5 py-1.5 rounded-full bg-white text-secondary font-label-sm text-[12px] font-bold shadow-sm flex items-center gap-1.5 transition-all" id="view-grid-btn" type="button">
+<span class="material-symbols-outlined text-[16px]">grid_view</span>
+<span>Grid</span>
+</button>
+<button aria-label="Map View" class="px-3.5 py-1.5 rounded-full text-on-surface-variant hover:text-on-surface font-label-sm text-[12px] font-semibold flex items-center gap-1.5 transition-all" id="view-map-btn" type="button">
+<span class="material-symbols-outlined text-[16px]">map</span>
+<span>Map View</span>
+</button>
+</div>
+</div>
+</section>
+<!-- 5. MINIMAL, VISUAL-FIRST WORKER CARDS GRID (3 Columns Desktop) -->
+<section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="grid-view-section">
+<!-- WORKER CARD 1: Rahul Sharma -->
+<article class="worker-card group relative flex flex-col rounded-2xl bg-surface-container-lowest border border-surface-container-high/60 overflow-hidden shadow-[0_4px_20px_-2px_rgba(99,102,241,0.05)] hover:shadow-[0_16px_36px_-6px_rgba(59,73,223,0.12)] transition-all duration-300 hover:-translate-y-1 cursor-pointer" data-worker-id="rahul">
+<!-- High-Quality Large Portrait (~62% height ratio) -->
+<div class="relative w-full h-64 overflow-hidden bg-surface-container-high">
+<img class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105" data-alt="Rahul Sharma Master Plumber portrait" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBClBZ5P3lw5y23hPkWvBt2E7JmGu_P3LgcRd5-cb6lbJg_LJHwc8rFoUJbVvl9mNnP2xopmIFen66NkvYngMK9am7jJ9k8nEm16HZsJxgiuAduIeFTd318KzoG-p3OMHH4wW_oozz17UMRzXwP94fKEvK8PP6zb8NlEAlugKNH0Upu-RUcArpKP0n5qcdGIYmqGHBYLPXazn3nfTXJxmR53276SJ7NDqSKsMuDPD4jL1GtJ8hf3NCk7g"/>
+<!-- Heart favorite toggle floating on top right -->
+<button aria-label="Save to favorites" class="favorite-heart absolute top-3 right-3 w-9 h-9 rounded-full bg-surface-container-lowest/80 backdrop-blur-md flex items-center justify-center text-on-surface-variant hover:text-primary hover:bg-white transition-all shadow-sm z-10" type="button">
+<span class="material-symbols-outlined text-[18px]">favorite</span>
+</button>
+<!-- Availability pill bottom left of image -->
+<div class="absolute bottom-3 left-3 px-2.5 py-1 rounded-full bg-white/90 backdrop-blur-md font-label-sm text-[11px] font-bold text-emerald-700 flex items-center gap-1.5 shadow-sm">
+<span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+<span>Available today</span>
+</div>
+</div>
+<!-- Clean Info Zone Below Image -->
+<div class="p-4 flex flex-col justify-between flex-grow">
+<div>
+<div class="flex items-start justify-between gap-2">
+<div>
+<h3 class="font-headline-sm text-[18px] font-bold text-on-surface group-hover:text-primary transition-colors">Rahul Sharma</h3>
+<p class="font-body-sm text-[13px] text-on-surface-variant">Master Plumber &amp; Pipe Fitter</p>
+</div>
+</div>
+<div class="flex items-center gap-1.5 text-[12.5px] font-body-sm text-on-surface-variant mt-2">
+<span class="font-bold text-amber-500 flex items-center">
+<span class="material-symbols-outlined text-[15px] fill-current" style="font-variation-settings: 'FILL' 1;">star</span> 4.8
+                </span>
+<span>(120 reviews)</span>
+<span>•</span>
+<span class="text-on-surface-variant/80">1.2 km away</span>
+</div>
+</div>
+<!-- Price & Hover Action -->
+<div class="flex items-baseline justify-between pt-4 mt-3 border-t border-surface-container">
+<div>
+<span class="font-body-sm text-[11px] uppercase tracking-wider text-on-surface-variant block font-medium">Starting</span>
+<span class="font-headline-sm text-[16px] font-extrabold text-on-surface">From ₹250 <span class="font-body-sm text-[12px] font-normal text-on-surface-variant">/ hr</span></span>
+</div>
+<span class="font-label-md text-[13px] font-bold text-primary group-hover:translate-x-1 transition-transform flex items-center gap-0.5">
+                View Profile <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</span>
+</div>
+</div>
+</article>
+<!-- WORKER CARD 2: Priya Nair -->
+<article class="worker-card group relative flex flex-col rounded-2xl bg-surface-container-lowest border border-surface-container-high/60 overflow-hidden shadow-[0_4px_20px_-2px_rgba(99,102,241,0.05)] hover:shadow-[0_16px_36px_-6px_rgba(59,73,223,0.12)] transition-all duration-300 hover:-translate-y-1 cursor-pointer" data-worker-id="priya">
+<div class="relative w-full h-64 overflow-hidden bg-surface-container-high">
+<img class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105" data-alt="Priya Nair Deep Cleaning Specialist" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDiWWuSVD8AUgSKQv_x4lluNm0CtbgaL68RoJ2mErEAp8PTY6-iBIUrMF77NLzrovYtNHOInJLHi2aSqhjvRLy92Jl1pkwtDODxqvRxz0RGHu4fVjSP531_kER7Mk374aRjhNaBiinvQDXFEFtyCooCVMiyF60s9_m3vPHmqWiwGc19RfNUef3jdCg1AqS7FzYXs8QQ9XtRYAAIJyVd2PhFmP66Bz1YGHkiEtEnrZu_KyYE0yBwMT5Bvg"/>
+<button aria-label="Save to favorites" class="favorite-heart absolute top-3 right-3 w-9 h-9 rounded-full bg-surface-container-lowest/80 backdrop-blur-md flex items-center justify-center text-on-surface-variant hover:text-primary hover:bg-white transition-all shadow-sm z-10" type="button">
+<span class="material-symbols-outlined text-[18px]">favorite</span>
+</button>
+<div class="absolute bottom-3 left-3 px-2.5 py-1 rounded-full bg-white/90 backdrop-blur-md font-label-sm text-[11px] font-bold text-secondary flex items-center gap-1.5 shadow-sm">
+<span class="material-symbols-outlined text-[14px]">schedule</span>
+<span>Available in 2h</span>
+</div>
+</div>
+<div class="p-4 flex flex-col justify-between flex-grow">
+<div>
+<div class="flex items-start justify-between gap-2">
+<div>
+<h3 class="font-headline-sm text-[18px] font-bold text-on-surface group-hover:text-primary transition-colors">Priya Nair</h3>
+<p class="font-body-sm text-[13px] text-on-surface-variant">Deep Cleaning &amp; Sanitization</p>
+</div>
+</div>
+<div class="flex items-center gap-1.5 text-[12.5px] font-body-sm text-on-surface-variant mt-2">
+<span class="font-bold text-amber-500 flex items-center">
+<span class="material-symbols-outlined text-[15px] fill-current" style="font-variation-settings: 'FILL' 1;">star</span> 4.6
+                </span>
+<span>(56 reviews)</span>
+<span>•</span>
+<span class="text-on-surface-variant/80">1.5 km away</span>
+</div>
+</div>
+<div class="flex items-baseline justify-between pt-4 mt-3 border-t border-surface-container">
+<div>
+<span class="font-body-sm text-[11px] uppercase tracking-wider text-on-surface-variant block font-medium">Starting</span>
+<span class="font-headline-sm text-[16px] font-extrabold text-on-surface">From ₹200 <span class="font-body-sm text-[12px] font-normal text-on-surface-variant">/ room</span></span>
+</div>
+<span class="font-label-md text-[13px] font-bold text-primary group-hover:translate-x-1 transition-transform flex items-center gap-0.5">
+                View Profile <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</span>
+</div>
+</div>
+</article>
+<!-- WORKER CARD 3: Amit Kumar -->
+<article class="worker-card group relative flex flex-col rounded-2xl bg-surface-container-lowest border border-surface-container-high/60 overflow-hidden shadow-[0_4px_20px_-2px_rgba(99,102,241,0.05)] hover:shadow-[0_16px_36px_-6px_rgba(59,73,223,0.12)] transition-all duration-300 hover:-translate-y-1 cursor-pointer" data-worker-id="amit">
+<div class="relative w-full h-64 overflow-hidden bg-surface-container-high">
+<img class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105" data-alt="Amit Kumar Licensed Electrician" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBoJn77SijiUqZeX6hHt5s3eStp3JxfnYS1bvtyOyu2huHzJNWXCnDbXqmiAfh6ehgwQhp1eVtXtNDlOGBrdH_R4G4UBDBvZh-bJjT4-m1HbD0Zjf1NAjDrlAzLjDgA6FcC9o0kZVJJ9VFbY47KgxUn9lRes4psNf2xVNmAlbhYQ9Fc8ftnScOcSueHLzZYwUS3PTxgrv3FlIc-a7GwroHMoVmTod14dBFgA0c05bzEydc-rvVumjWB5A"/>
+<button aria-label="Save to favorites" class="favorite-heart absolute top-3 right-3 w-9 h-9 rounded-full bg-surface-container-lowest/80 backdrop-blur-md flex items-center justify-center text-on-surface-variant hover:text-primary hover:bg-white transition-all shadow-sm z-10" type="button">
+<span class="material-symbols-outlined text-[18px]">favorite</span>
+</button>
+<div class="absolute bottom-3 left-3 px-2.5 py-1 rounded-full bg-white/90 backdrop-blur-md font-label-sm text-[11px] font-bold text-emerald-700 flex items-center gap-1.5 shadow-sm">
+<span class="material-symbols-outlined text-[14px]">event_available</span>
+<span>Available today</span>
+</div>
+</div>
+<div class="p-4 flex flex-col justify-between flex-grow">
+<div>
+<div class="flex items-start justify-between gap-2">
+<div>
+<h3 class="font-headline-sm text-[18px] font-bold text-on-surface group-hover:text-primary transition-colors">Amit Kumar</h3>
+<p class="font-body-sm text-[13px] text-on-surface-variant">Certified Electrician &amp; Wiring</p>
+</div>
+</div>
+<div class="flex items-center gap-1.5 text-[12.5px] font-body-sm text-on-surface-variant mt-2">
+<span class="font-bold text-amber-500 flex items-center">
+<span class="material-symbols-outlined text-[15px] fill-current" style="font-variation-settings: 'FILL' 1;">star</span> 4.7
+                </span>
+<span>(89 reviews)</span>
+<span>•</span>
+<span class="text-on-surface-variant/80">2.1 km away</span>
+</div>
+</div>
+<div class="flex items-baseline justify-between pt-4 mt-3 border-t border-surface-container">
+<div>
+<span class="font-body-sm text-[11px] uppercase tracking-wider text-on-surface-variant block font-medium">Starting</span>
+<span class="font-headline-sm text-[16px] font-extrabold text-on-surface">From ₹300 <span class="font-body-sm text-[12px] font-normal text-on-surface-variant">/ hr</span></span>
+</div>
+<span class="font-label-md text-[13px] font-bold text-primary group-hover:translate-x-1 transition-transform flex items-center gap-0.5">
+                View Profile <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</span>
+</div>
+</div>
+</article>
+<!-- WORKER CARD 4: Vikram Patel -->
+<article class="worker-card group relative flex flex-col rounded-2xl bg-surface-container-lowest border border-surface-container-high/60 overflow-hidden shadow-[0_4px_20px_-2px_rgba(99,102,241,0.05)] hover:shadow-[0_16px_36px_-6px_rgba(59,73,223,0.12)] transition-all duration-300 hover:-translate-y-1 cursor-pointer" data-worker-id="vikram">
+<div class="relative w-full h-64 overflow-hidden bg-surface-container-high">
+<img class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105" data-alt="Vikram Patel Custom Carpenter" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBeaWBoVUzzExXB0Ru0s9VIvkJ5kVO0yIlfS65hVwxhHeU4MW_-Thaihz6BcsLsMWpnw6K0N2KRXpSk8FFcqbuGqvOOr9lqCp0VlHD3D9Wmx8RNmqJ1n_J7DGXSxlulUin6c5SixhoAhtzEuwyW0aOuSZBd63GItRbMhV1UodKgRckQQLnK9PvjkTmK156Bz2AM0jLJeDL0RtSk1vh3x-_zVOA9PsZ83tP0KNdPzhWFwnVMB502rZfexQ"/>
+<button aria-label="Save to favorites" class="favorite-heart absolute top-3 right-3 w-9 h-9 rounded-full bg-surface-container-lowest/80 backdrop-blur-md flex items-center justify-center text-on-surface-variant hover:text-primary hover:bg-white transition-all shadow-sm z-10" type="button">
+<span class="material-symbols-outlined text-[18px]">favorite</span>
+</button>
+<div class="absolute bottom-3 left-3 px-2.5 py-1 rounded-full bg-white/90 backdrop-blur-md font-label-sm text-[11px] font-bold text-on-surface flex items-center gap-1.5 shadow-sm">
+<span class="material-symbols-outlined text-[14px]">calendar_today</span>
+<span>Available tomorrow</span>
+</div>
+</div>
+<div class="p-4 flex flex-col justify-between flex-grow">
+<div>
+<div class="flex items-start justify-between gap-2">
+<div>
+<h3 class="font-headline-sm text-[18px] font-bold text-on-surface group-hover:text-primary transition-colors">Vikram Patel</h3>
+<p class="font-body-sm text-[13px] text-on-surface-variant">Custom Furniture &amp; Wood Repair</p>
+</div>
+</div>
+<div class="flex items-center gap-1.5 text-[12.5px] font-body-sm text-on-surface-variant mt-2">
+<span class="font-bold text-amber-500 flex items-center">
+<span class="material-symbols-outlined text-[15px] fill-current" style="font-variation-settings: 'FILL' 1;">star</span> 4.5
+                </span>
+<span>(40 reviews)</span>
+<span>•</span>
+<span class="text-on-surface-variant/80">3.4 km away</span>
+</div>
+</div>
+<div class="flex items-baseline justify-between pt-4 mt-3 border-t border-surface-container">
+<div>
+<span class="font-body-sm text-[11px] uppercase tracking-wider text-on-surface-variant block font-medium">Starting</span>
+<span class="font-headline-sm text-[16px] font-extrabold text-on-surface">From ₹350 <span class="font-body-sm text-[12px] font-normal text-on-surface-variant">/ task</span></span>
+</div>
+<span class="font-label-md text-[13px] font-bold text-primary group-hover:translate-x-1 transition-transform flex items-center gap-0.5">
+                View Profile <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</span>
+</div>
+</div>
+</article>
+<!-- WORKER CARD 5: Sneha Kulkarni (New Talent Highlighted) -->
+<article class="worker-card group relative flex flex-col rounded-2xl bg-surface-container-lowest border-2 border-primary/30 overflow-hidden shadow-[0_12px_32px_-6px_rgba(225,29,116,0.15)] hover:shadow-[0_20px_40px_-6px_rgba(225,29,116,0.22)] transition-all duration-300 hover:-translate-y-1 cursor-pointer" data-worker-id="sneha">
+<!-- New Talent Aurora Banner Badge -->
+<div class="absolute top-3 left-3 z-20">
+<span class="px-2.5 py-1 rounded-full aurora-pill-active text-white font-label-sm text-[10.5px] font-extrabold tracking-wide uppercase shadow-md flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px]">auto_awesome</span>
+<span>New Talent</span>
+</span>
+</div>
+<div class="relative w-full h-64 overflow-hidden bg-surface-container-high">
+<img class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105" data-alt="Sneha Kulkarni Appliance Specialist" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCWi1FyJPpDYm5hNRwT96JEfr5wlunRty4h_4XUkUmW7Kf90WXlvqLUZ83xsoH1efS64yA1tYoBZ21TgE_WxGlDWNgj_OFNVwwPqISfqHuhrqwISlougcwCsnrbdv3qlOiu31aqpsHiUAIeYbHP68fn5hkUHpM7DkpR5GShRrs_joDMJDPrgsE4wKcrTtaZ2AveZjzcP0P1HFDJL6_vj_thVc1QesB6ay1XGkMpkNQhlIdzyBf2o1roAg"/>
+<button aria-label="Save to favorites" class="favorite-heart absolute top-3 right-3 w-9 h-9 rounded-full bg-surface-container-lowest/80 backdrop-blur-md flex items-center justify-center text-on-surface-variant hover:text-primary hover:bg-white transition-all shadow-sm z-10" type="button">
+<span class="material-symbols-outlined text-[18px]">favorite</span>
+</button>
+<div class="absolute bottom-3 left-3 px-2.5 py-1 rounded-full bg-white/90 backdrop-blur-md font-label-sm text-[11px] font-bold text-emerald-700 flex items-center gap-1.5 shadow-sm">
+<span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+<span>Available now</span>
+</div>
+</div>
+<div class="p-4 flex flex-col justify-between flex-grow bg-gradient-to-b from-primary-fixed/5 to-transparent">
+<div>
+<div class="flex items-start justify-between gap-2">
+<div>
+<h3 class="font-headline-sm text-[18px] font-bold text-on-surface group-hover:text-primary transition-colors">Sneha Kulkarni</h3>
+<p class="font-body-sm text-[13px] text-on-surface-variant">Appliance Repair Specialist</p>
+</div>
+</div>
+<div class="flex items-center gap-1.5 text-[12.5px] font-body-sm text-on-surface-variant mt-2">
+<span class="font-bold text-primary flex items-center">
+<span class="material-symbols-outlined text-[15px] fill-current" style="font-variation-settings: 'FILL' 1;">star</span> 4.9
+                </span>
+<span>(12 reviews)</span>
+<span>•</span>
+<span class="text-on-surface-variant/80">0.8 km away</span>
+</div>
+</div>
+<div class="flex items-baseline justify-between pt-4 mt-3 border-t border-surface-container">
+<div>
+<span class="font-body-sm text-[11px] uppercase tracking-wider text-on-surface-variant block font-medium">Starting</span>
+<span class="font-headline-sm text-[16px] font-extrabold text-on-surface">From ₹220 <span class="font-body-sm text-[12px] font-normal text-on-surface-variant">/ visit</span></span>
+</div>
+<span class="font-label-md text-[13px] font-bold text-primary group-hover:translate-x-1 transition-transform flex items-center gap-0.5">
+                View Profile <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</span>
+</div>
+</div>
+</article>
+<!-- WORKER CARD 6: Rajesh Verma -->
+<article class="worker-card group relative flex flex-col rounded-2xl bg-surface-container-lowest border border-surface-container-high/60 overflow-hidden shadow-[0_4px_20px_-2px_rgba(99,102,241,0.05)] hover:shadow-[0_16px_36px_-6px_rgba(59,73,223,0.12)] transition-all duration-300 hover:-translate-y-1 cursor-pointer" data-worker-id="rajesh">
+<div class="relative w-full h-64 overflow-hidden bg-surface-container-high">
+<img class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105" data-alt="Rajesh Verma Master Painter" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAZ316hmLgi6qrDHaidPjj9hHI9wtq5I1i5pjQoQ-Rv9Fup6sljkqN3n3ZQUagWHf2WxhhGAHTjBpISyUw8yopWnk_-_3Jxt-EahpiK98wgSEaogdLFXeYkCQ9iyuRHZWt_eYlKFItJnBI2XAWwoEfwojCVwRoDye3S_BVinxbxmPeZ6J-XFWaQ2OXs4nTsM38_Y8nL2thRKMkWRJ18oxI6k6icqa9uBkpqndfJoIJnKqST0YCAxlOMVg"/>
+<button aria-label="Save to favorites" class="favorite-heart absolute top-3 right-3 w-9 h-9 rounded-full bg-surface-container-lowest/80 backdrop-blur-md flex items-center justify-center text-on-surface-variant hover:text-primary hover:bg-white transition-all shadow-sm z-10" type="button">
+<span class="material-symbols-outlined text-[18px]">favorite</span>
+</button>
+<div class="absolute bottom-3 left-3 px-2.5 py-1 rounded-full bg-white/90 backdrop-blur-md font-label-sm text-[11px] font-bold text-on-surface flex items-center gap-1.5 shadow-sm">
+<span class="material-symbols-outlined text-[14px]">calendar_today</span>
+<span>Available Saturday</span>
+</div>
+</div>
+<div class="p-4 flex flex-col justify-between flex-grow">
+<div>
+<div class="flex items-start justify-between gap-2">
+<div>
+<h3 class="font-headline-sm text-[18px] font-bold text-on-surface group-hover:text-primary transition-colors">Rajesh Verma</h3>
+<p class="font-body-sm text-[13px] text-on-surface-variant">Interior &amp; Texture Painting</p>
+</div>
+</div>
+<div class="flex items-center gap-1.5 text-[12.5px] font-body-sm text-on-surface-variant mt-2">
+<span class="font-bold text-amber-500 flex items-center">
+<span class="material-symbols-outlined text-[15px] fill-current" style="font-variation-settings: 'FILL' 1;">star</span> 4.8
+                </span>
+<span>(74 reviews)</span>
+<span>•</span>
+<span class="text-on-surface-variant/80">2.8 km away</span>
+</div>
+</div>
+<div class="flex items-baseline justify-between pt-4 mt-3 border-t border-surface-container">
+<div>
+<span class="font-body-sm text-[11px] uppercase tracking-wider text-on-surface-variant block font-medium">Starting</span>
+<span class="font-headline-sm text-[16px] font-extrabold text-on-surface">From ₹400 <span class="font-body-sm text-[12px] font-normal text-on-surface-variant">/ day</span></span>
+</div>
+<span class="font-label-md text-[13px] font-bold text-primary group-hover:translate-x-1 transition-transform flex items-center gap-0.5">
+                View Profile <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</span>
+</div>
+</div>
+</article>
+</section>
+<!-- 7. INTERACTIVE MAP VIEW SECTION (Switched via Map View Toggle) -->
+<section class="hidden w-full rounded-2xl overflow-hidden bg-surface-container-lowest border border-surface-container-high p-4 shadow-[0_12px_36px_-6px_rgba(59,73,223,0.08)]" id="map-view-section">
+<div class="flex items-center justify-between pb-3">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[22px]">explore</span>
+<span class="font-headline-sm text-[16px] font-bold text-on-surface">Interactive Proximity Map</span>
+<span class="text-[12px] text-on-surface-variant">• Click pins to preview professionals</span>
+</div>
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 font-label-sm text-[11px] font-bold">
+<span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+<span>6 Active Specialists Nearby</span>
+</span>
+</div>
+<div class="relative w-full h-[520px] rounded-xl overflow-hidden bg-surface-container-high border border-surface-container">
+<!-- Stylized map background -->
+<div class="w-full h-full bg-cover bg-center" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAN-6BnlaufOt5pccYe6QTjO4kr8BKiXkZtOvG1ZGOZ5WSo5mL81BcO_D9f2wX6l_0eF1OYmvnmGUdQ9hEGQyXWlAoWzDqx-tueClspuSlmK4g-JXCPaV1ns9TN58lRn9AysMBJ_LK5VCyc4e-1HmBK6_JDv6rJLq9CV5-vbvk5Xp8c43bpXuhLex8iv01ERIyQUvcZUmKHPsB5UlOemQwDN6P3I1p01q_tL8zVGYiN8n3v7TSad1HGsQ')"></div>
+<!-- MAP PIN 1: Rahul -->
+<div class="absolute top-[32%] left-[42%] -translate-x-1/2 -translate-y-1/2 cursor-pointer z-10" onclick="openWorkerModal('rahul')">
+<div class="px-3 py-1.5 rounded-full bg-secondary text-white font-label-sm text-[12px] font-bold shadow-lg hover:scale-110 transition-transform flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[14px]">plumbing</span>
+<span>Rahul (₹250/h)</span>
+</div>
+</div>
+<!-- MAP PIN 2: Priya -->
+<div class="absolute top-[22%] left-[64%] -translate-x-1/2 -translate-y-1/2 cursor-pointer z-10" onclick="openWorkerModal('priya')">
+<div class="px-3 py-1.5 rounded-full bg-white text-on-surface font-label-sm text-[12px] font-bold shadow-lg hover:scale-110 transition-transform flex items-center gap-1.5 border border-surface-container">
+<span class="material-symbols-outlined text-[14px] text-emerald-600">cleaning_services</span>
+<span>Priya (₹200/r)</span>
+</div>
+</div>
+<!-- MAP PIN 3: Amit -->
+<div class="absolute top-[68%] left-[72%] -translate-x-1/2 -translate-y-1/2 cursor-pointer z-10" onclick="openWorkerModal('amit')">
+<div class="px-3 py-1.5 rounded-full bg-white text-on-surface font-label-sm text-[12px] font-bold shadow-lg hover:scale-110 transition-transform flex items-center gap-1.5 border border-surface-container">
+<span class="material-symbols-outlined text-[14px] text-amber-500">electrical_services</span>
+<span>Amit (₹300/h)</span>
+</div>
+</div>
+<!-- MAP PIN 4: Sneha (Selected Glow Pin) -->
+<div class="absolute top-[52%] left-[34%] -translate-x-1/2 -translate-y-1/2 cursor-pointer z-20" onclick="openWorkerModal('sneha')">
+<div class="relative flex items-center justify-center">
+<span class="absolute w-14 h-14 rounded-full bg-primary/30 animate-ping"></span>
+<div class="relative px-3.5 py-2 rounded-full aurora-pill-active text-white font-label-sm text-[12px] font-extrabold shadow-xl flex items-center gap-1.5 hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-[15px]">auto_awesome</span>
+<span>Sneha (Top 5% • ₹220)</span>
+</div>
+</div>
+</div>
+<!-- Floating Interactive Map Preview Card -->
+<div class="absolute bottom-4 left-4 right-4 md:right-auto md:left-6 md:w-[380px] z-30 p-4 rounded-2xl bg-white/95 backdrop-blur-xl border border-surface-container-high shadow-[0_20px_48px_-6px_rgba(15,23,42,0.18)]">
+<div class="flex items-start justify-between gap-3">
+<div class="flex items-center gap-3">
+<div class="relative w-12 h-12 rounded-xl overflow-hidden shrink-0 ring-2 ring-primary/40">
+<img alt="Sneha Kulkarni" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCWi1FyJPpDYm5hNRwT96JEfr5wlunRty4h_4XUkUmW7Kf90WXlvqLUZ83xsoH1efS64yA1tYoBZ21TgE_WxGlDWNgj_OFNVwwPqISfqHuhrqwISlougcwCsnrbdv3qlOiu31aqpsHiUAIeYbHP68fn5hkUHpM7DkpR5GShRrs_joDMJDPrgsE4wKcrTtaZ2AveZjzcP0P1HFDJL6_vj_thVc1QesB6ay1XGkMpkNQhlIdzyBf2o1roAg"/>
+<span class="absolute bottom-0 right-0 w-3 h-3 rounded-full bg-emerald-500 ring-1 ring-white"></span>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-1">
+<span class="font-label-lg text-[14px] font-bold text-on-surface truncate">Sneha Kulkarni</span>
+<span class="material-symbols-outlined text-primary text-[16px]" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+<span class="font-body-sm text-[12px] text-on-surface-variant truncate">Appliance &amp; Inverter Specialist</span>
+<span class="font-label-sm text-[11px] text-emerald-700 font-bold flex items-center gap-1 mt-0.5">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> Available Now • 0.8 km
+                  </span>
+</div>
+</div>
+<div class="text-right">
+<span class="font-label-sm text-[10px] uppercase font-bold text-primary">From</span>
+<div class="font-headline-sm text-[16px] font-extrabold text-on-surface">₹220</div>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-2 mt-3 pt-2 border-t border-surface-container">
+<button class="py-2 px-3 rounded-xl bg-surface-container hover:bg-surface-container-high text-on-surface font-label-md text-[12px] font-bold transition-colors" onclick="openWorkerModal('sneha')" type="button">
+                View Profile
+              </button>
+<button class="py-2 px-3 rounded-xl aurora-gradient-btn text-white font-label-md text-[12px] font-bold shadow-md hover:opacity-95 transition-transform active:scale-95" onclick="openWorkerModal('sneha')" type="button">
+                Book Now
+              </button>
+</div>
+</div>
+</div>
+</section>
+<!-- 8. FAIR OPPORTUNITY DISCOVERY BANNER -->
+<section class="relative overflow-hidden rounded-2xl p-6 sm:p-8 bg-surface-container-lowest/90 backdrop-blur-xl border border-surface-container-high shadow-[0_8px_30px_rgba(59,73,223,0.06)] mt-2">
+<!-- Subtle Aurora ambient glow -->
+<div class="pointer-events-none absolute inset-0 bg-gradient-to-r from-primary-fixed/20 via-tertiary-fixed/25 to-secondary-fixed/20 opacity-60"></div>
+<div class="relative z-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+<div class="flex items-start gap-4 max-w-2xl">
+<div class="w-12 h-12 rounded-xl aurora-gradient-btn flex items-center justify-center text-white shrink-0 shadow-md">
+<span class="material-symbols-outlined text-[24px]">auto_awesome</span>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<span class="font-label-sm text-[11px] font-extrabold uppercase tracking-wider text-primary">Kaarya Equity Discovery</span>
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+<span class="font-label-sm text-[11px] text-on-surface-variant font-medium">Merit-First Platform</span>
+</div>
+<h3 class="font-headline-sm text-[20px] font-bold text-on-surface mt-1">Discover New Talent</h3>
+<p class="font-body-md text-[14px] text-on-surface-variant mt-1">
+                Explore skilled professionals building their reputation. Compare relevant skills, work samples, and verified qualifications—not just review counts.
+              </p>
+</div>
+</div>
+<button class="shrink-0 px-6 py-3 rounded-full aurora-gradient-btn text-white font-label-md text-[13px] font-bold shadow-[0_6px_20px_rgba(225,29,116,0.25)] hover:opacity-95 transition-all flex items-center gap-2" type="button">
+<span>Explore New Professionals</span>
+<span class="material-symbols-outlined text-[17px]">arrow_forward</span>
+</button>
+</div>
+</section>
+<!-- PAGINATION BAR -->
+<div class="flex flex-col sm:flex-row items-center justify-between gap-4 py-4 px-1">
+<span class="font-body-sm text-[13px] text-on-surface-variant">Displaying 6 of 120 verified trade professionals</span>
+<div class="flex items-center gap-1.5">
+<button class="w-9 h-9 rounded-full bg-surface-container-low text-outline flex items-center justify-center cursor-not-allowed opacity-50" disabled="" type="button">
+<span class="material-symbols-outlined text-[18px]">chevron_left</span>
+</button>
+<button class="w-9 h-9 rounded-full aurora-pill-active text-white font-label-md text-xs font-bold shadow-sm" type="button">1</button>
+<button class="w-9 h-9 rounded-full bg-surface-container-lowest hover:bg-surface-container text-on-surface font-label-md text-xs font-semibold transition-colors" type="button">2</button>
+<button class="w-9 h-9 rounded-full bg-surface-container-lowest hover:bg-surface-container text-on-surface font-label-md text-xs font-semibold transition-colors" type="button">3</button>
+<span class="px-1 text-on-surface-variant text-xs font-bold">...</span>
+<button class="w-9 h-9 rounded-full bg-surface-container-lowest hover:bg-surface-container text-on-surface font-label-md text-xs font-semibold transition-colors" type="button">20</button>
+<button class="w-9 h-9 rounded-full bg-surface-container-lowest hover:bg-surface-container text-on-surface flex items-center justify-center transition-colors shadow-sm" type="button">
+<span class="material-symbols-outlined text-[18px]">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+<!-- 6. INTERACTIVE WORKER PROFILE MODAL (Crucial requirement: Aurora Glassmorphism 2-Column Dialog) -->
+<div aria-modal="true" class="fixed inset-0 z-50 hidden overflow-y-auto bg-slate-900/60 backdrop-blur-md flex items-center justify-center p-4 sm:p-6 transition-all" id="worker-profile-modal" role="dialog">
+<div class="relative w-full max-w-5xl rounded-3xl bg-surface-container-lowest/95 backdrop-blur-2xl border border-white/80 shadow-[0_24px_70px_rgba(0,0,0,0.25),0_0_80px_rgba(225,29,116,0.15)] overflow-hidden transition-all transform scale-100 my-8">
+<!-- Modal Close Button -->
+<button aria-label="Close modal" class="absolute top-4 right-4 z-20 w-10 h-10 rounded-full bg-surface-container-low hover:bg-surface-container text-on-surface flex items-center justify-center transition-colors" id="close-modal-btn" type="button">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+<!-- Modal Header Ambient Top Ribbon -->
+<div class="h-2.5 w-full aurora-gradient-btn"></div>
+<!-- Modal Body (Two-Column Layout) -->
+<div class="grid grid-cols-1 lg:grid-cols-12 max-h-[85vh] overflow-y-auto">
+<!-- LEFT COLUMN: Professional Profile & Portfolio -->
+<div class="lg:col-span-7 p-6 sm:p-8 flex flex-col gap-6 border-b lg:border-b-0 lg:border-r border-surface-container">
+<!-- Identity Summary -->
+<div class="flex items-start gap-4">
+<div class="relative w-20 h-20 sm:w-24 sm:h-24 rounded-2xl overflow-hidden shrink-0 shadow-md ring-2 ring-primary/20">
+<img alt="Worker portrait" class="w-full h-full object-cover" id="modal-img" src=""/>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-2">
+<h2 class="font-headline-md text-[24px] font-bold text-on-surface truncate" id="modal-name">Rahul Sharma</h2>
+<span class="material-symbols-outlined text-primary text-[20px]" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+<p class="font-body-md text-[14px] text-on-surface-variant font-medium" id="modal-title">Master Plumber &amp; Pipe Fitter</p>
+<div class="flex flex-wrap items-center gap-2 mt-2 text-[13px]">
+<span class="flex items-center gap-1 font-bold text-amber-500">
+<span class="material-symbols-outlined text-[16px] fill-current" style="font-variation-settings: 'FILL' 1;">star</span>
+<span id="modal-rating">4.8</span>
+</span>
+<span class="text-on-surface-variant" id="modal-reviews">(120 reviews)</span>
+<span>•</span>
+<span class="text-on-surface-variant flex items-center gap-0.5" id="modal-distance">
+<span class="material-symbols-outlined text-[14px] text-primary">location_on</span> 1.2 km away
+                </span>
+</div>
+<div class="mt-2 self-start inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-700 font-label-sm text-[11px] font-bold" id="modal-status-badge">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+<span id="modal-avail">Available today</span>
+</div>
+</div>
+</div>
+<!-- Professional Bio -->
+<div>
+<h4 class="font-label-lg text-[13px] font-bold text-on-surface uppercase tracking-wider">About Professional</h4>
+<p class="font-body-md text-[14px] text-on-surface-variant mt-2 leading-relaxed" id="modal-bio">
+              Certified trade professional with over 8 years of hands-on experience handling residential installations, emergency piping, and modern fixtures across Mumbai Central.
+            </p>
+</div>
+<!-- Skills & Specializations Chips -->
+<div>
+<h4 class="font-label-lg text-[13px] font-bold text-on-surface uppercase tracking-wider">Skills &amp; Specializations</h4>
+<div class="flex flex-wrap gap-2 mt-2.5" id="modal-skills">
+<!-- Injected via JavaScript -->
+</div>
+</div>
+<!-- Portfolio / Recent Work Samples -->
+<div>
+<div class="flex items-center justify-between">
+<h4 class="font-label-lg text-[13px] font-bold text-on-surface uppercase tracking-wider">Recent Work Photos</h4>
+<span class="text-[12px] font-semibold text-secondary">Verified On-Site</span>
+</div>
+<div class="grid grid-cols-3 gap-3 mt-2.5">
+<div class="aspect-video rounded-xl overflow-hidden bg-surface-container-high border border-surface-container shadow-sm group cursor-pointer">
+<img alt="Work sample 1" class="w-full h-full object-cover group-hover:scale-105 transition-transform" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAXjazakxAIzfk2spAxQ4-I3vyYT393UuPUxeeF1sReu7b9TiRUgd55erJpHUBcsMztr83IXnpiTJhSycOKOUB7BXgbLz9yOpftseZIduUuh50NBr_q0V_riDUNQM0eXsqH06_cUR_HplMr4wU-8qgRQ4IBaZrk4sR2MGksPXuQk-qvXXEuebWBXxnsiJysm95mhMn0dfkuq82pHyqsFUIlqBgU0AyhQnAnlR-ikrayJnORYS9o0Mzkkw"/>
+</div>
+<div class="aspect-video rounded-xl overflow-hidden bg-surface-container-high border border-surface-container shadow-sm group cursor-pointer">
+<img alt="Work sample 2" class="w-full h-full object-cover group-hover:scale-105 transition-transform" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCEe9Wrpm1SL2UZiEjPjpgTN2DVwXonohfgkaMkEKfvREh9-SOEyrPPLg5PHhkr5vJGNMByWMpcKPhCOuqQJAd785DcaWrCfgM-N9nxOEon2ZOhO2nPJmPVBvRYz7mhA0DKOs6KTNKOwBWCEpCV02PAZxCWds6--ekdDZ8IDqZ6EcyBKzS8xwwCuqpEmYfphTVX1wOsFGLc4GPsU8yI_1zFII1IR2KIS0szlCMPiT_NbHTgTMkkC6Frpw"/>
+</div>
+<div class="aspect-video rounded-xl overflow-hidden bg-surface-container-high border border-surface-container shadow-sm group cursor-pointer">
+<img alt="Work sample 3" class="w-full h-full object-cover group-hover:scale-105 transition-transform" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCSqzWHoKvyms4KA85oWRwY2xkqCNULd5ylOX-2BlFMkgYL4oG0KesPL6hvRu0vwih0MlgJUdasb78_8mZJRN5jfJZz19iW12gA10EVOoDgLNk606GNVUOCm15M7XSqRyIPua8vwEkSBGnv9ITD-YmUqkHFT32644-MEW87xIvLzvKoE8s84FIMiyNfmUVwl6jhT6eXBQ5Mu74ixY2hYtnUhrf0zBMy2cW4sDHV4J23atesgJO4I9pSXA"/>
+</div>
+</div>
+</div>
+<!-- Recent Verified Customer Reviews -->
+<div>
+<h4 class="font-label-lg text-[13px] font-bold text-on-surface uppercase tracking-wider">Verified Customer Reviews</h4>
+<div class="flex flex-col gap-3 mt-2.5">
+<div class="p-3.5 rounded-xl bg-surface-container-low/60 border border-surface-container">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-[13px] font-bold text-on-surface">Aditya K. — Bandra</span>
+<div class="flex items-center text-amber-500 text-[13px]">
+                    ★★★★★
+                  </div>
+</div>
+<p class="font-body-sm text-[12.5px] text-on-surface-variant mt-1">
+                  "Arrived right on time, diagnosed the issue within 10 minutes, and left everything spotless. Extremely polite and professional."
+                </p>
+</div>
+<div class="p-3.5 rounded-xl bg-surface-container-low/60 border border-surface-container">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-[13px] font-bold text-on-surface">Sunita M. — Khar</span>
+<div class="flex items-center text-amber-500 text-[13px]">
+                    ★★★★★
+                  </div>
+</div>
+<p class="font-body-sm text-[12.5px] text-on-surface-variant mt-1">
+                  "Fair pricing upfront with zero hidden charges. Highly recommend their work!"
+                </p>
+</div>
+</div>
+</div>
+</div>
+<!-- RIGHT COLUMN: Trust, Verifications & Instant Booking -->
+<div class="lg:col-span-5 p-6 sm:p-8 bg-surface-container-low/40 flex flex-col justify-between gap-6">
+<div class="flex flex-col gap-5">
+<!-- Transparent Pricing Tiers -->
+<div class="p-4 rounded-2xl bg-white border border-surface-container shadow-sm">
+<span class="font-label-sm text-[11px] uppercase tracking-wider text-on-surface-variant font-bold">Standard Platform Rates</span>
+<div class="flex items-baseline justify-between mt-1">
+<span class="font-headline-md text-[24px] font-extrabold text-on-surface" id="modal-price">₹250 – ₹400 / hr</span>
+<span class="font-label-sm text-[11px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full">Guaranteed Rate</span>
+</div>
+<p class="font-body-sm text-[12px] text-on-surface-variant mt-1">
+                Includes travel within 5 km, initial assessment, and 30-day Kaarya service warranty.
+              </p>
+</div>
+<!-- Granular Verification Checklist with Claim Badges -->
+<div>
+<h4 class="font-label-lg text-[13px] font-bold text-on-surface uppercase tracking-wider">Trust &amp; Verification Dossier</h4>
+<div class="flex flex-col gap-2 mt-2.5">
+<div class="flex items-center justify-between p-2.5 rounded-xl bg-white border border-surface-container">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-secondary">fingerprint</span>
+<span class="font-label-md text-[12.5px] font-semibold text-on-surface">Identity Checked</span>
+</div>
+<span class="font-label-sm text-[11px] font-bold text-secondary bg-secondary-fixed/50 px-2 py-0.5 rounded-md">Govt Aadhaar</span>
+</div>
+<div class="flex items-center justify-between p-2.5 rounded-xl bg-white border border-surface-container">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-tertiary">psychology</span>
+<span class="font-label-md text-[12.5px] font-semibold text-on-surface">Skill Assessment</span>
+</div>
+<span class="font-label-sm text-[11px] font-bold text-tertiary bg-tertiary-fixed/50 px-2 py-0.5 rounded-md" id="modal-assessment">96% Passed</span>
+</div>
+<div class="flex items-center justify-between p-2.5 rounded-xl bg-white border border-surface-container">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-emerald-600">verified_user</span>
+<span class="font-label-md text-[12.5px] font-semibold text-on-surface">Background Check</span>
+</div>
+<span class="font-label-sm text-[11px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-md">Police Verified</span>
+</div>
+<div class="flex items-center justify-between p-2.5 rounded-xl bg-white border border-surface-container">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-primary">history_edu</span>
+<span class="font-label-md text-[12.5px] font-semibold text-on-surface">Experience Duration</span>
+</div>
+<span class="font-label-sm text-[11px] font-bold text-primary bg-primary-fixed/50 px-2 py-0.5 rounded-md" id="modal-experience">8+ Years</span>
+</div>
+</div>
+</div>
+<!-- Live Availability Selector / Slots -->
+<div>
+<h4 class="font-label-lg text-[13px] font-bold text-on-surface uppercase tracking-wider">Select Time Slot</h4>
+<div class="grid grid-cols-3 gap-2 mt-2">
+<button class="p-2 rounded-xl border-2 border-primary bg-primary-fixed/20 text-primary font-label-sm text-[11.5px] font-bold text-center" type="button">Today 2:30 PM</button>
+<button class="p-2 rounded-xl border border-surface-container bg-white hover:bg-surface-container text-on-surface font-label-sm text-[11.5px] font-medium text-center transition-colors" type="button">Today 5:00 PM</button>
+<button class="p-2 rounded-xl border border-surface-container bg-white hover:bg-surface-container text-on-surface font-label-sm text-[11.5px] font-medium text-center transition-colors" type="button">Tomorrow 10 AM</button>
+</div>
+</div>
+</div>
+<!-- CTAs -->
+<div class="flex flex-col gap-2.5 pt-4 border-t border-surface-container">
+<button class="w-full py-3.5 rounded-xl aurora-gradient-btn hover:opacity-95 text-white font-label-lg text-[14px] font-bold shadow-[0_8px_24px_rgba(225,29,116,0.3)] transition-transform active:scale-[0.98] flex items-center justify-center gap-2" type="button">
+<span class="material-symbols-outlined text-[20px]">calendar_month</span>
+<span>Request Service Now</span>
+</button>
+<button class="w-full py-2.5 rounded-xl bg-white hover:bg-surface-container text-on-surface border border-surface-container font-label-md text-[13px] font-semibold flex items-center justify-center gap-2 transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px] text-secondary">chat</span>
+<span>Chat with Professional</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- 3. MORE FILTERS MODAL / POPOVER -->
+<div class="fixed inset-0 z-50 hidden bg-slate-900/50 backdrop-blur-sm flex items-center justify-center p-4" id="more-filters-modal">
+<div class="w-full max-w-md rounded-2xl bg-white p-6 shadow-2xl border border-surface-container-high flex flex-col gap-4">
+<div class="flex items-center justify-between pb-2 border-b border-surface-container">
+<h3 class="font-headline-sm text-[18px] font-bold text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-tertiary">tune</span>
+          More Verification Filters
+        </h3>
+<button class="w-8 h-8 rounded-full hover:bg-surface-container flex items-center justify-center text-on-surface-variant" id="close-filters-modal-btn">✕</button>
+</div>
+<div class="flex flex-col gap-3 py-1">
+<label class="flex items-center gap-3 cursor-pointer">
+<input checked="" class="w-4 h-4 rounded text-secondary focus:ring-secondary" type="checkbox"/>
+<div>
+<span class="font-label-md text-[13px] font-semibold text-on-surface block">Identity Checked (Aadhaar Verified)</span>
+<span class="text-[11px] text-on-surface-variant">Biometric Aadhaar match confirmed</span>
+</div>
+</label>
+<label class="flex items-center gap-3 cursor-pointer">
+<input checked="" class="w-4 h-4 rounded text-secondary focus:ring-secondary" type="checkbox"/>
+<div>
+<span class="font-label-md text-[13px] font-semibold text-on-surface block">Trade Qualification &amp; Certifications</span>
+<span class="text-[11px] text-on-surface-variant">ITI or recognized vocational accreditation</span>
+</div>
+</label>
+<label class="flex items-center gap-3 cursor-pointer">
+<input checked="" class="w-4 h-4 rounded text-secondary focus:ring-secondary" type="checkbox"/>
+<div>
+<span class="font-label-md text-[13px] font-semibold text-on-surface block">Hands-on Skill Assessment Passed</span>
+<span class="text-[11px] text-on-surface-variant">Standardized practical trade score 90%+</span>
+</div>
+</label>
+<label class="flex items-center gap-3 cursor-pointer">
+<input checked="" class="w-4 h-4 rounded text-secondary focus:ring-secondary" type="checkbox"/>
+<div>
+<span class="font-label-md text-[13px] font-semibold text-on-surface block">Background Screening Completed</span>
+<span class="text-[11px] text-on-surface-variant">Clean criminal and civil record check</span>
+</div>
+</label>
+</div>
+<div class="flex items-center justify-end gap-2 pt-3 border-t border-surface-container">
+<button class="px-4 py-2 rounded-xl text-on-surface-variant font-label-md text-xs font-semibold hover:text-on-surface" id="reset-filters-btn" type="button">Reset</button>
+<button class="px-5 py-2.5 rounded-xl aurora-gradient-btn text-white font-label-md text-xs font-bold shadow-md hover:opacity-95" id="apply-filters-btn" type="button">Apply Filters</button>
+</div>
+</div>
+</div>
+<!-- FOOTER -->
+<footer class="w-full bg-surface-container-lowest border-t border-surface-container-high/60 mt-12">
+<div class="max-w-[1280px] mx-auto px-6 lg:px-8 py-10">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 pb-8 border-b border-surface-container">
+<div class="flex items-center gap-4 p-4 rounded-2xl bg-surface-container-low/50">
+<div class="w-11 h-11 rounded-xl bg-primary-fixed flex items-center justify-center text-primary shrink-0">
+<span class="material-symbols-outlined text-[24px]">verified_user</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-lg text-[13px] text-on-surface font-bold">100% Aadhaar &amp; Skill Verified</span>
+<span class="font-body-sm text-[12px] text-on-surface-variant">Strict bio-metric identity and trade evaluation.</span>
+</div>
+</div>
+<div class="flex items-center gap-4 p-4 rounded-2xl bg-surface-container-low/50">
+<div class="w-11 h-11 rounded-xl bg-secondary-fixed flex items-center justify-center text-secondary shrink-0">
+<span class="material-symbols-outlined text-[24px]">lock</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-lg text-[13px] text-on-surface font-bold">Secure Escrow Payments</span>
+<span class="font-body-sm text-[12px] text-on-surface-variant">Funds released only upon verified completion of job.</span>
+</div>
+</div>
+<div class="flex items-center gap-4 p-4 rounded-2xl bg-surface-container-low/50">
+<div class="w-11 h-11 rounded-xl bg-tertiary-fixed flex items-center justify-center text-tertiary shrink-0">
+<span class="material-symbols-outlined text-[24px]">support_agent</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-lg text-[13px] text-on-surface font-bold">24/7 Citizen Support</span>
+<span class="font-body-sm text-[12px] text-on-surface-variant">Dedicated regional redressal in 12 languages.</span>
+</div>
+</div>
+</div>
+<div class="flex flex-col md:flex-row items-center justify-between gap-4 pt-6">
+<div class="flex items-center gap-2">
+<div class="w-7 h-7 rounded-lg aurora-gradient-btn flex items-center justify-center text-white">
+<span class="material-symbols-outlined text-[15px]">handyman</span>
+</div>
+<span class="font-headline-sm text-[15px] font-bold text-on-surface">Kaarya</span>
+<span class="font-body-sm text-[12px] text-on-surface-variant ml-2">© 2025 Kaarya Hyperlocal Platform Ltd. All rights reserved.</span>
+</div>
+<div class="flex items-center gap-6">
+<a class="font-label-md text-[12px] text-on-surface-variant hover:text-on-surface transition-colors" data-path="about" href="#">Privacy Policy</a>
+<a class="font-label-md text-[12px] text-on-surface-variant hover:text-on-surface transition-colors" data-path="about" href="#">Terms of Service</a>
+<a class="font-label-md text-[12px] text-on-surface-variant hover:text-on-surface transition-colors" data-path="about" href="#">Safety Guidelines</a>
+</div>
+</div>
+</div>
+</footer>
+<!-- JAVASCRIPT: Interactivity for Modals, Tabs, Favorites & Grid/Map switch -->
+<script>
+    // Worker Data Store for Interactive Modal
+    const WORKERS = {
+      rahul: {
+        name: "Rahul Sharma",
+        title: "Master Plumber & Pipe Fitter",
+        rating: "4.8",
+        reviews: "(120 reviews)",
+        distance: "1.2 km away • Bandra West",
+        avail: "Available today",
+        price: "₹250 – ₹400 / hr",
+        assessment: "94% Passed (Level 4)",
+        experience: "8+ Years",
+        img: "https://lh3.googleusercontent.com/aida-public/AB6AXuBClBZ5P3lw5y23hPkWvBt2E7JmGu_P3LgcRd5-cb6lbJg_LJHwc8rFoUJbVvl9mNnP2xopmIFen66NkvYngMK9am7jJ9k8nEm16HZsJxgiuAduIeFTd318KzoG-p3OMHH4wW_oozz17UMRzXwP94fKEvK8PP6zb8NlEAlugKNH0Upu-RUcArpKP0n5qcdGIYmqGHBYLPXazn3nfTXJxmR53276SJ7NDqSKsMuDPD4jL1GtJ8hf3NCk7g",
+        bio: "Veteran plumbing specialist specializing in high-pressure leak detection, concealed pipe routing, and sanitary ware installation. Fully equipped with modern acoustic detection tools.",
+        skills: ["Pipe Leak Detection", "Concealed Plumbing", "Bathroom Fixtures", "Water Heater Install", "Pressure Pumps"]
+      },
+      priya: {
+        name: "Priya Nair",
+        title: "Deep Cleaning & Sanitization Specialist",
+        rating: "4.6",
+        reviews: "(56 reviews)",
+        distance: "1.5 km away • Khar & Santacruz",
+        avail: "Available in 2h",
+        price: "₹200 – ₹350 / room",
+        assessment: "92% Hygiene Certified",
+        experience: "5+ Years",
+        img: "https://lh3.googleusercontent.com/aida-public/AB6AXuDiWWuSVD8AUgSKQv_x4lluNm0CtbgaL68RoJ2mErEAp8PTY6-iBIUrMF77NLzrovYtNHOInJLHi2aSqhjvRLy92Jl1pkwtDODxqvRxz0RGHu4fVjSP531_kER7Mk374aRjhNaBiinvQDXFEFtyCooCVMiyF60s9_m3vPHmqWiwGc19RfNUef3jdCg1AqS7FzYXs8QQ9XtRYAAIJyVd2PhFmP66Bz1YGHkiEtEnrZu_KyYE0yBwMT5Bvg",
+        bio: "Expert residential and commercial cleaning professional utilizing medical-grade eco-friendly cleaning detergents, steam sanitizers, and deep scrubbing apparatus.",
+        skills: ["Eco-Friendly Products", "Kitchen Degreasing", "Upholstery Steam Clean", "Balcony Power Wash", "Full Sanitization"]
+      },
+      amit: {
+        name: "Amit Kumar",
+        title: "Certified Electrician & Wiring Technician",
+        rating: "4.7",
+        reviews: "(89 reviews)",
+        distance: "2.1 km away • Dadar / Matunga",
+        avail: "Available today",
+        price: "₹300 – ₹500 / hr",
+        assessment: "96% Govt Wireman",
+        experience: "7+ Years",
+        img: "https://lh3.googleusercontent.com/aida-public/AB6AXuBoJn77SijiUqZeX6hHt5s3eStp3JxfnYS1bvtyOyu2huHzJNWXCnDbXqmiAfh6ehgwQhp1eVtXtNDlOGBrdH_R4G4UBDBvZh-bJjT4-m1HbD0Zjf1NAjDrlAzLjDgA6FcC9o0kZVJJ9VFbY47KgxUn9lRes4psNf2xVNmAlbhYQ9Fc8ftnScOcSueHLzZYwUS3PTxgrv3FlIc-a7GwroHMoVmTod14dBFgA0c05bzEydc-rvVumjWB5A",
+        bio: "Licensed wireman skilled in residential circuitry, MCB tripping resolution, inverter installations, and heavy-duty smart home appliance integration.",
+        skills: ["Circuit Diagnostics", "MCB & Distribution Box", "Inverter Installation", "LED Concealed Lighting", "Earthing"]
+      },
+      vikram: {
+        name: "Vikram Patel",
+        title: "Custom Furniture & Wood Repair Craftsman",
+        rating: "4.5",
+        reviews: "(40 reviews)",
+        distance: "3.4 km away • Thane & Mulund",
+        avail: "Available tomorrow",
+        price: "₹350 – ₹600 / task",
+        assessment: "91% Trade Tested",
+        experience: "12+ Years",
+        img: "https://lh3.googleusercontent.com/aida-public/AB6AXuBeaWBoVUzzExXB0Ru0s9VIvkJ5kVO0yIlfS65hVwxhHeU4MW_-Thaihz6BcsLsMWpnw6K0N2KRXpSk8FFcqbuGqvOOr9lqCp0VlHD3D9Wmx8RNmqJ1n_J7DGXSxlulUin6c5SixhoAhtzEuwyW0aOuSZBd63GItRbMhV1UodKgRckQQLnK9PvjkTmK156Bz2AM0jLJeDL0RtSk1vh3x-_zVOA9PsZ83tP0KNdPzhWFwnVMB502rZfexQ",
+        bio: "Traditional woodworker and modern modular furniture expert. Specializes in lock replacements, kitchen hinge alignment, custom shelving, and antique wood restoration.",
+        skills: ["Furniture Assembly", "Lock Repair & Setup", "Cabinetry Adjustments", "Door Planing", "Wood Polishing"]
+      },
+      sneha: {
+        name: "Sneha Kulkarni",
+        title: "Appliance & Inverter Repair Specialist",
+        rating: "4.9",
+        reviews: "(12 reviews • New Talent)",
+        distance: "0.8 km away • Mahim",
+        avail: "Available now",
+        price: "₹220 – ₹380 / visit",
+        assessment: "98% Top Tier (Rank #1)",
+        experience: "2 Years (ITI Gold Medal)",
+        img: "https://lh3.googleusercontent.com/aida-public/AB6AXuCWi1FyJPpDYm5hNRwT96JEfr5wlunRty4h_4XUkUmW7Kf90WXlvqLUZ83xsoH1efS64yA1tYoBZ21TgE_WxGlDWNgj_OFNVwwPqISfqHuhrqwISlougcwCsnrbdv3qlOiu31aqpsHiUAIeYbHP68fn5hkUHpM7DkpR5GShRrs_joDMJDPrgsE4wKcrTtaZ2AveZjzcP0P1HFDJL6_vj_thVc1QesB6ay1XGkMpkNQhlIdzyBf2o1roAg",
+        bio: "Distinguished electronics graduate with top 5% practical test scores. Specialized in diagnostic board repair, micro-controller troubleshooting for RO systems, microwaves, and power inverters.",
+        skills: ["Inverter Setup", "Microwave Electronics", "PCB Diagnostics", "RO Purifier Servicing", "Smart Controls"]
+      },
+      rajesh: {
+        name: "Rajesh Verma",
+        title: "Interior & Texture Painting Specialist",
+        rating: "4.8",
+        reviews: "(74 reviews)",
+        distance: "2.8 km away • Worli",
+        avail: "Available Saturday",
+        price: "₹400 – ₹800 / day",
+        assessment: "95% Finish Evaluated",
+        experience: "8+ Years",
+        img: "https://lh3.googleusercontent.com/aida-public/AB6AXuAZ316hmLgi6qrDHaidPjj9hHI9wtq5I1i5pjQoQ-Rv9Fup6sljkqN3n3ZQUagWHf2WxhhGAHTjBpISyUw8yopWnk_-_3Jxt-EahpiK98wgSEaogdLFXeYkCQ9iyuRHZWt_eYlKFItJnBI2XAWwoEfwojCVwRoDye3S_BVinxbxmPeZ6J-XFWaQ2OXs4nTsM38_Y8nL2thRKMkWRJ18oxI6k6icqa9uBkpqndfJoIJnKqST0YCAxlOMVg",
+        bio: "Artisan painter proficient in modern texture application, waterproofing damp treatments, stencil artwork, and dustless wall sanding for seamless domestic finishes.",
+        skills: ["Waterproofing Coat", "Stencil & Texture", "Dustless Sanding", "Emulsion Coating", "Color Matching"]
+      }
+    };
+
+    // Modal Opening Function
+    function openWorkerModal(id) {
+      const data = WORKERS[id] || WORKERS['rahul'];
+      document.getElementById('modal-name').textContent = data.name;
+      document.getElementById('modal-title').textContent = data.title;
+      document.getElementById('modal-rating').textContent = data.rating;
+      document.getElementById('modal-reviews').textContent = data.reviews;
+      document.getElementById('modal-distance').innerHTML = `<span class="material-symbols-outlined text-[14px] text-primary">location_on</span> ${data.distance}`;
+      document.getElementById('modal-avail').textContent = data.avail;
+      document.getElementById('modal-price').textContent = data.price;
+      document.getElementById('modal-assessment').textContent = data.assessment;
+      document.getElementById('modal-experience').textContent = data.experience;
+      document.getElementById('modal-bio').textContent = data.bio;
+      document.getElementById('modal-img').src = data.img;
+
+      // Populate skills
+      const skillsContainer = document.getElementById('modal-skills');
+      skillsContainer.innerHTML = '';
+      data.skills.forEach(skill => {
+        const badge = document.createElement('span');
+        badge.className = 'px-3 py-1 rounded-full bg-surface-container text-on-surface font-label-sm text-[12px] font-medium';
+        badge.textContent = skill;
+        skillsContainer.appendChild(badge);
+      });
+
+      const modal = document.getElementById('worker-profile-modal');
+      modal.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeWorkerModal() {
+      const modal = document.getElementById('worker-profile-modal');
+      modal.classList.add('hidden');
+      document.body.style.overflow = '';
+    }
+
+    // Attach card clicks & stop heart propagation
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('.worker-card').forEach(card => {
+        card.addEventListener('click', (e) => {
+          // If clicked on heart button, do not open modal
+          if (e.target.closest('.favorite-heart')) {
+            return;
+          }
+          const workerId = card.getAttribute('data-worker-id');
+          openWorkerModal(workerId);
+        });
+      });
+
+      // Favorite toggle
+      document.querySelectorAll('.favorite-heart').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const icon = btn.querySelector('.material-symbols-outlined');
+          if (btn.classList.contains('text-primary')) {
+            btn.classList.remove('text-primary');
+            icon.style.fontVariationSettings = "'FILL' 0";
+          } else {
+            btn.classList.add('text-primary');
+            icon.style.fontVariationSettings = "'FILL' 1";
+          }
+        });
+      });
+
+      // Close modal events
+      document.getElementById('close-modal-btn')?.addEventListener('click', closeWorkerModal);
+      const modalBackdrop = document.getElementById('worker-profile-modal');
+      modalBackdrop?.addEventListener('click', (e) => {
+        if (e.target === modalBackdrop) {
+          closeWorkerModal();
+        }
+      });
+      window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          closeWorkerModal();
+          document.getElementById('more-filters-modal')?.classList.add('hidden');
+        }
+      });
+
+      // View Toggle (Grid vs Map View)
+      const gridBtn = document.getElementById('view-grid-btn');
+      const mapBtn = document.getElementById('view-map-btn');
+      const gridSection = document.getElementById('grid-view-section');
+      const mapSection = document.getElementById('map-view-section');
+
+      mapBtn?.addEventListener('click', () => {
+        gridSection.classList.add('hidden');
+        mapSection.classList.remove('hidden');
+        mapBtn.classList.add('bg-white', 'text-secondary', 'font-bold', 'shadow-sm');
+        mapBtn.classList.remove('text-on-surface-variant');
+        gridBtn.classList.remove('bg-white', 'text-secondary', 'font-bold', 'shadow-sm');
+        gridBtn.classList.add('text-on-surface-variant');
+      });
+
+      gridBtn?.addEventListener('click', () => {
+        mapSection.classList.add('hidden');
+        gridSection.classList.remove('hidden');
+        gridBtn.classList.add('bg-white', 'text-secondary', 'font-bold', 'shadow-sm');
+        gridBtn.classList.remove('text-on-surface-variant');
+        mapBtn.classList.remove('bg-white', 'text-secondary', 'font-bold', 'shadow-sm');
+        mapBtn.classList.add('text-on-surface-variant');
+      });
+
+      // More Filters Modal
+      const moreFiltersBtn = document.getElementById('open-more-filters-btn');
+      const filtersModal = document.getElementById('more-filters-modal');
+      const closeFiltersModalBtn = document.getElementById('close-filters-modal-btn');
+      const applyFiltersBtn = document.getElementById('apply-filters-btn');
+
+      moreFiltersBtn?.addEventListener('click', () => {
+        filtersModal.classList.remove('hidden');
+      });
+      closeFiltersModalBtn?.addEventListener('click', () => {
+        filtersModal.classList.add('hidden');
+      });
+      applyFiltersBtn?.addEventListener('click', () => {
+        filtersModal.classList.add('hidden');
+      });
+      filtersModal?.addEventListener('click', (e) => {
+        if (e.target === filtersModal) filtersModal.classList.add('hidden');
+      });
+    });
+  </script>
+</body></html>

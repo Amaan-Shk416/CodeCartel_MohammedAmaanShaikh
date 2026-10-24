@@ -1,0 +1,894 @@
+<!DOCTYPE html><html lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<meta content="web_standard" name="shell-type">
+<title>KaamSetu — Local Skills. Fair Opportunities. At Your Doorstep.</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@500;600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              navy: "#10152D",
+              slate: "#626B85",
+              cyan: "#00E5FF",
+              pink: "#FF1493",
+              purple: "#8B00FF",
+              blue: "#0080FF",
+            }
+          },
+          fontFamily: {
+            sans: ["Inter", "sans-serif"],
+            display: ["Plus Jakarta Sans", "sans-serif"]
+          },
+          boxShadow: {
+            'glass': '0 8px 32px 0 rgba(115, 80, 210, 0.08), 0 1px 3px 0 rgba(0, 0, 0, 0.03)',
+            'glass-lg': '0 20px 48px -12px rgba(80, 35, 180, 0.12), 0 1px 4px 0 rgba(0,0,0,0.04)',
+            'aurora-glow': '0 12px 36px -6px rgba(255, 20, 147, 0.28), 0 4px 14px -2px rgba(0, 128, 255, 0.22)',
+            'aurora-glow-sm': '0 4px 20px -2px rgba(139, 0, 255, 0.2)'
+          }
+        }
+      }
+    };
+  </script>
+<style>
+    @layer base {
+      html, body {
+        margin: 0;
+        padding: 0;
+        background-color: #FAFBFF;
+        color: #10152D;
+      }
+      ::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #f1f4fc;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #d4dcf5;
+        border-radius: 9999px;
+      }
+    }
+
+    /* Aurora Glows & Glass Utility Classes */
+    .glass-surface {
+      background: rgba(255, 255, 255, 0.78);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.9);
+      box-shadow: 0 10px 30px -5px rgba(90, 70, 180, 0.07), 0 1px 3px 0 rgba(220, 225, 250, 0.6);
+    }
+    
+    .glass-surface-accent {
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(246, 248, 255, 0.75) 100%);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border: 1px solid rgba(200, 180, 255, 0.25);
+    }
+
+    .aurora-btn-primary {
+      background: linear-gradient(110deg, #FF1493 0%, #8B00FF 52%, #0080FF 100%);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .aurora-btn-primary:hover {
+      box-shadow: 0 10px 28px -4px rgba(255, 20, 147, 0.42), 0 4px 12px -2px rgba(0, 128, 255, 0.3);
+      transform: translateY(-2px);
+    }
+
+    .aurora-card-hover {
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .aurora-card-hover:hover {
+      transform: translateY(-4px);
+      border-color: rgba(139, 0, 255, 0.25);
+      box-shadow: 0 20px 40px -10px rgba(110, 50, 220, 0.12), 0 2px 6px rgba(0, 0, 0, 0.03);
+    }
+
+    /* Ambient animated backdrops */
+    .aurora-blob-1 {
+      position: absolute;
+      width: 580px;
+      height: 580px;
+      background: radial-gradient(circle, rgba(255, 20, 147, 0.15) 0%, rgba(139, 0, 255, 0.08) 50%, transparent 70%);
+      filter: blur(80px);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .aurora-blob-2 {
+      position: absolute;
+      width: 620px;
+      height: 620px;
+      background: radial-gradient(circle, rgba(0, 229, 255, 0.16) 0%, rgba(0, 128, 255, 0.1) 45%, transparent 70%);
+      filter: blur(85px);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .aurora-blob-3 {
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(139, 0, 255, 0.14) 0%, rgba(255, 20, 147, 0.06) 50%, transparent 70%);
+      filter: blur(75px);
+      pointer-events: none;
+      z-index: 0;
+    }
+  </style>
+</head>
+<body class="bg-[#FAFBFF] font-sans text-brand-navy antialiased min-h-screen relative overflow-x-hidden selection:bg-brand-pink/20 selection:text-brand-purple">
+<!-- Ambient Aurora Backdrops -->
+<div class="aurora-blob-1 -top-32 -left-20"></div>
+<div class="aurora-blob-2 top-20 right-[-100px]"></div>
+<div class="aurora-blob-3 top-[1050px] left-1/4"></div>
+<div class="aurora-blob-2 bottom-40 right-10"></div>
+<!-- FLOATING GLASS HEADER -->
+<header class="fixed top-4 inset-x-0 z-50 px-4 md:px-8 max-w-7xl mx-auto">
+<div class="glass-surface rounded-2xl px-5 py-3 flex items-center justify-between gap-4 shadow-glass transition-all duration-300">
+<!-- Brand Logo & Name -->
+<a class="flex items-center gap-3 shrink-0 group" href="#">
+<div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-pink via-brand-purple to-brand-blue p-[1.5px] shadow-sm group-hover:scale-105 transition-transform">
+<div class="w-full h-full bg-white rounded-[10px] flex items-center justify-center">
+<span class="material-symbols-outlined text-transparent bg-clip-text bg-gradient-to-r from-brand-pink to-brand-purple text-[22px]" style="font-variation-settings: &quot;FILL&quot; 1;">
+              auto_awesome
+            </span>
+</div>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-1.5">
+<span class="font-display font-extrabold text-xl tracking-tight text-brand-navy">Kaar<span class="bg-gradient-to-r from-brand-pink via-brand-purple to-brand-blue bg-clip-text text-transparent">ya</span></span>
+<span class="w-1.5 h-1.5 rounded-full bg-brand-cyan animate-pulse"></span>
+</div>
+<span class="text-[10px] uppercase font-bold tracking-wider text-brand-slate">Where Skills Meet Opportunity</span>
+</div>
+</a>
+<!-- Desktop Navigation Links -->
+<nav class="hidden lg:flex items-center gap-1 bg-white/60 p-1.5 rounded-xl border border-white/80 shadow-inner">
+<a class="px-4 py-1.5 rounded-lg text-xs font-semibold text-white bg-gradient-to-r from-brand-pink to-brand-purple shadow-sm transition-all" href="#">
+          Home
+        </a>
+<a class="px-3.5 py-1.5 rounded-lg text-xs font-semibold text-brand-slate hover:text-brand-navy hover:bg-white/80 transition-all" href="#find-professionals">
+          Find Professionals
+        </a>
+<a class="px-3.5 py-1.5 rounded-lg text-xs font-semibold text-brand-slate hover:text-brand-navy hover:bg-white/80 transition-all" href="#how-it-works">
+          How It Works
+        </a>
+<a class="px-3.5 py-1.5 rounded-lg text-xs font-semibold text-brand-slate hover:text-brand-navy hover:bg-white/80 transition-all" href="#for-workers">
+          For Workers
+        </a>
+<a class="px-3.5 py-1.5 rounded-lg text-xs font-semibold text-brand-slate hover:text-brand-navy hover:bg-white/80 transition-all" href="#about">
+          About
+        </a>
+</nav>
+<!-- Right Header Actions -->
+<div class="flex items-center gap-2.5 shrink-0">
+<!-- Location Pill -->
+<button class="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-purple-50/70 border border-purple-100/80 text-xs font-semibold text-brand-purple hover:bg-purple-100/60 transition-colors">
+<span class="material-symbols-outlined text-[16px] text-brand-pink">location_on</span>
+<span class="">Mumbai, MH</span>
+<span class="material-symbols-outlined text-[14px]">expand_more</span>
+</button>
+<!-- Notification Bell with Active Ping -->
+<button aria-label="Notifications" class="relative w-9 h-9 rounded-xl bg-white/80 border border-slate-200/70 flex items-center justify-center text-brand-slate hover:text-brand-navy hover:bg-white transition-all shadow-sm">
+<span class="material-symbols-outlined text-[20px]">notifications</span>
+<span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-brand-pink ring-2 ring-white"></span>
+</button>
+<!-- Sign In Button -->
+<button class="hidden sm:inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-bold text-brand-navy bg-white hover:bg-slate-50 border border-slate-200/80 shadow-sm transition-all">
+<span class="">Sign In</span>
+</button>
+<!-- User Avatar Gradient Pill -->
+<div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-brand-pink via-brand-purple to-brand-blue p-[2px] shadow-sm cursor-pointer hover:scale-105 transition-transform">
+<div class="w-full h-full bg-white rounded-[10px] flex items-center justify-center text-brand-purple">
+<span class="material-symbols-outlined text-[20px]">account_circle</span>
+</div>
+</div>
+</div>
+</div>
+</header>
+<!-- MAIN BODY -->
+<main class="w-full pt-28 pb-16 relative z-10">
+<!-- HERO SECTION -->
+<section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 pb-12 w-full">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center">
+<!-- Left Hero Content -->
+<div class="lg:col-span-7 flex flex-col justify-center space-y-6">
+<!-- Glass Top Pill -->
+<div class="inline-flex items-center gap-2 self-start px-3.5 py-1.5 rounded-full bg-white/90 border border-purple-200/60 shadow-sm backdrop-blur-md">
+<span class="flex h-2 w-2 relative">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-pink opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-brand-pink"></span>
+</span>
+<span class="text-[11px] font-extrabold uppercase tracking-widest bg-gradient-to-r from-brand-pink via-brand-purple to-brand-blue bg-clip-text text-transparent">
+              TRUSTED · LOCAL · FAIR OPPORTUNITIES
+            </span>
+</div>
+<!-- Master Headline -->
+<div class="space-y-1">
+<h1 class="font-display font-extrabold text-4xl sm:text-5xl lg:text-[62px] leading-[1.08] tracking-tight text-brand-navy">
+<span class="bg-gradient-to-r from-brand-pink via-[#B800E6] to-brand-purple bg-clip-text text-transparent block">
+                Local Skills.
+              </span>
+<span class="bg-gradient-to-r from-brand-purple via-brand-blue to-cyan-500 bg-clip-text text-transparent block">
+                Fair Opportunities.
+              </span>
+<span class="text-brand-navy block">
+                At Your Doorstep.
+              </span>
+</h1>
+</div>
+<!-- Supporting Text -->
+<p class="text-brand-slate text-base sm:text-lg max-w-xl font-normal leading-relaxed">
+            Find verified, neighborhood professionals for plumbing, electrical, cleaning, carpentry, and home care at straightforward prices. Support local micro-entrepreneurs in your community.
+          </p>
+<!-- Large Horizontal Glass Search Component -->
+<div class="w-full glass-surface rounded-2xl p-2.5 md:p-3 shadow-glass-lg border border-white flex flex-col md:flex-row items-center gap-2.5">
+<!-- Service search input -->
+<div class="flex items-center gap-3 flex-1 px-4 py-3 w-full bg-white/90 rounded-xl border border-slate-200/70 focus-within:border-brand-purple/50 focus-within:ring-2 focus-within:ring-brand-purple/10 transition-all">
+<span class="material-symbols-outlined text-brand-purple text-[22px] shrink-0">search</span>
+<input class="w-full bg-transparent text-sm text-brand-navy placeholder:text-brand-slate/70 focus:outline-none border-0 p-0" placeholder="What service do you need? (e.g. Electrician, Carpenter)" type="text">
+</div>
+<!-- Location selector -->
+<div class="flex items-center justify-between gap-2 px-4 py-3 w-full md:w-52 bg-white/90 rounded-xl border border-slate-200/70 cursor-pointer hover:bg-white transition-colors">
+<div class="flex items-center gap-2 truncate">
+<span class="material-symbols-outlined text-brand-pink text-[20px] shrink-0">location_on</span>
+<span class="text-xs font-semibold text-brand-navy truncate">Mumbai, MH</span>
+</div>
+<span class="material-symbols-outlined text-brand-slate text-[18px]">expand_more</span>
+</div>
+<!-- High Impact Aurora CTA Button -->
+<button class="w-full md:w-auto px-7 py-3 rounded-xl aurora-btn-primary text-white font-display font-bold text-sm flex items-center justify-center gap-2 shrink-0">
+<span class="material-symbols-outlined text-[18px]">search</span>
+<span class="">Search Pros</span>
+</button>
+</div>
+<!-- Popular Search Tags with Subtle Glass Pills -->
+<div class="flex flex-wrap items-center gap-2 pt-1 text-xs">
+<span class="text-brand-slate font-bold uppercase tracking-wider text-[11px] mr-1">Popular:</span>
+<a class="px-3 py-1 rounded-full bg-white/80 hover:bg-white border border-purple-100 text-brand-navy font-medium shadow-sm transition-all hover:scale-105" href="#">
+              ⚡ Electrician
+            </a>
+<a class="px-3 py-1 rounded-full bg-white/80 hover:bg-white border border-pink-100 text-brand-navy font-medium shadow-sm transition-all hover:scale-105" href="#">
+              ✨ Deep Cleaning
+            </a>
+<a class="px-3 py-1 rounded-full bg-white/80 hover:bg-white border border-cyan-100 text-brand-navy font-medium shadow-sm transition-all hover:scale-105" href="#">
+              ❄️ AC Repair
+            </a>
+<a class="px-3 py-1 rounded-full bg-white/80 hover:bg-white border border-blue-100 text-brand-navy font-medium shadow-sm transition-all hover:scale-105" href="#">
+              🔧 Plumber
+            </a>
+<a class="px-3 py-1 rounded-full bg-white/80 hover:bg-white border border-amber-100 text-brand-navy font-medium shadow-sm transition-all hover:scale-105" href="#">
+              🪵 Carpentry
+            </a>
+</div>
+</div>
+<!-- Right Hero Visual with Flowing Aurora Ribbons & Floating Glass Cards -->
+<div class="lg:col-span-5 relative flex justify-center items-center">
+<!-- Outer Aurora Glow Rings -->
+<div class="absolute -inset-4 bg-gradient-to-tr from-brand-cyan/25 via-brand-pink/20 to-brand-purple/30 rounded-[36px] blur-2xl -z-10"></div>
+<!-- Photo Container -->
+<div class="relative w-full max-w-[430px] aspect-[4/5] rounded-[32px] p-2 glass-surface border-white/90 shadow-glass-lg">
+<div class="w-full h-full rounded-[24px] overflow-hidden relative">
+<img alt="Friendly verified Indian service professional" class="w-full h-full object-cover object-center transform hover:scale-105 transition-transform duration-700 ease-out" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBnuAok1XRwd5pMwkslUzhQzC8jPZBAEhfk2Xb6zBMai8SPKpJmMdiXl-iR6mQxe_KaCu7C94sxAgJw3tv9undMFiHDYAvyhhrk89TvfLHlU9mYaQ1CWnX7nloYODEpjlHQFOZwAYmCWd86-cKrG-v8UIcWxFvQULmU16ZIaLZpnixHvZ9n0yVFc7ZA4QzwYxchvHqzuxsjHxPDfRjJOgrYq6f_JtxZ-5e2pkc2KrngTIgml73U6OBRDw">
+<div class="absolute inset-0 bg-gradient-to-t from-brand-navy/60 via-transparent to-transparent"></div>
+</div>
+</div>
+<!-- Top-Right Floating Impact Glass Card -->
+<div class="absolute -top-4 -right-2 md:top-4 md:-right-4 glass-surface rounded-2xl p-3.5 shadow-glass-lg max-w-[210px] transform hover:-translate-y-1 transition-transform border border-white">
+<div class="flex items-center gap-2 mb-1.5">
+<span class="w-6 h-6 rounded-full bg-gradient-to-tr from-brand-pink to-brand-purple text-white flex items-center justify-center text-xs shadow-sm">
+<span class="material-symbols-outlined text-[14px]">auto_awesome</span>
+</span>
+<span class="text-[10px] font-extrabold uppercase tracking-wider text-brand-purple">KaamSetu Impact</span>
+</div>
+<p class="font-display font-bold text-xs text-brand-navy leading-snug">
+              Skilled People.<br>Stronger Homes.
+            </p>
+<div class="w-full bg-slate-100 h-1.5 rounded-full mt-2 overflow-hidden">
+<div class="h-full bg-gradient-to-r from-brand-pink via-brand-purple to-brand-blue w-4/5 rounded-full"></div>
+</div>
+</div>
+<!-- Bottom-Left Floating Verified Glass Pill -->
+<div class="absolute -bottom-5 -left-2 md:bottom-4 md:-left-6 glass-surface rounded-2xl p-3.5 shadow-glass-lg flex items-center gap-3 transform hover:-translate-y-1 transition-transform border border-white">
+<div class="w-10 h-10 rounded-xl bg-gradient-to-br from-brand-cyan to-brand-blue flex items-center justify-center text-white shadow-aurora-glow-sm shrink-0">
+<span class="material-symbols-outlined text-[24px]" style="font-variation-settings: &quot;FILL&quot; 1;">verified</span>
+</div>
+<div class="flex flex-col">
+<span class="font-display font-bold text-xs text-brand-navy leading-tight">100% Background Verified</span>
+<div class="flex items-center gap-1.5 mt-0.5">
+<div class="flex text-amber-400">
+<span class="material-symbols-outlined text-[15px]" style="font-variation-settings: &quot;FILL&quot; 1;">star</span>
+<span class="material-symbols-outlined text-[15px]" style="font-variation-settings: &quot;FILL&quot; 1;">star</span>
+<span class="material-symbols-outlined text-[15px]" style="font-variation-settings: &quot;FILL&quot; 1;">star</span>
+<span class="material-symbols-outlined text-[15px]" style="font-variation-settings: &quot;FILL&quot; 1;">star</span>
+<span class="material-symbols-outlined text-[15px]" style="font-variation-settings: &quot;FILL&quot; 1;">star</span>
+</div>
+<span class="font-bold text-xs text-brand-navy">4.9</span>
+<span class="text-[11px] text-brand-slate">(3.8k)</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- SERVICE CATEGORIES SECTION -->
+<section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 w-full">
+<!-- Section Header -->
+<div class="flex flex-col sm:flex-row sm:items-end justify-between mb-8 gap-4">
+<div>
+<div class="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-brand-purple mb-1">
+<span class="material-symbols-outlined text-[16px]">widgets</span>
+<span class="">Hyperlocal Catalog</span>
+</div>
+<h2 class="font-display font-extrabold text-2xl sm:text-3xl text-brand-navy tracking-tight">
+            Popular Home Services
+          </h2>
+<p class="text-sm text-brand-slate mt-1">Direct dispatch with upfront guaranteed rates, no hidden fees</p>
+</div>
+<a class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white hover:bg-slate-50 border border-slate-200/80 text-brand-navy text-xs font-bold shadow-sm transition-all hover:scale-105 shrink-0 self-start sm:self-auto" href="#">
+<span class="">Explore 40+ Services</span>
+<span class="material-symbols-outlined text-[16px] text-brand-purple">arrow_forward</span>
+</a>
+</div>
+<!-- 8 Categories Grid -->
+<div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-3.5">
+<!-- 1: Plumbing (Cyan accent) -->
+<a class="group glass-surface p-4 rounded-2xl aurora-card-hover flex flex-col items-center text-center" href="#">
+<div class="w-13 h-13 p-3 rounded-2xl bg-cyan-50 border border-cyan-100 text-cyan-600 flex items-center justify-center mb-3 group-hover:scale-110 group-hover:bg-cyan-100/80 transition-all shadow-sm">
+<span class="material-symbols-outlined text-[26px]">plumbing</span>
+</div>
+<span class="font-display font-bold text-xs text-brand-navy mb-0.5">Plumbing</span>
+<span class="text-[11px] text-brand-slate">From ₹199</span>
+<span class="mt-2 text-[9px] uppercase font-extrabold tracking-wider text-cyan-700 bg-cyan-50 px-2 py-0.5 rounded-md">Book in 2m</span>
+</a>
+<!-- 2: Electrical (Amber/Purple) -->
+<a class="group glass-surface p-4 rounded-2xl aurora-card-hover flex flex-col items-center text-center" href="#">
+<div class="w-13 h-13 p-3 rounded-2xl bg-amber-50 border border-amber-100 text-amber-600 flex items-center justify-center mb-3 group-hover:scale-110 group-hover:bg-amber-100/80 transition-all shadow-sm">
+<span class="material-symbols-outlined text-[26px]">bolt</span>
+</div>
+<span class="font-display font-bold text-xs text-brand-navy mb-0.5">Electrical</span>
+<span class="text-[11px] text-brand-slate">From ₹149</span>
+<span class="mt-2 text-[9px] uppercase font-extrabold tracking-wider text-amber-700 bg-amber-50 px-2 py-0.5 rounded-md">Book in 2m</span>
+</a>
+<!-- 3: Cleaning (Mint/Cyan) -->
+<a class="group glass-surface p-4 rounded-2xl aurora-card-hover flex flex-col items-center text-center" href="#">
+<div class="w-13 h-13 p-3 rounded-2xl bg-emerald-50 border border-emerald-100 text-emerald-600 flex items-center justify-center mb-3 group-hover:scale-110 group-hover:bg-emerald-100/80 transition-all shadow-sm">
+<span class="material-symbols-outlined text-[26px]">cleaning_services</span>
+</div>
+<span class="font-display font-bold text-xs text-brand-navy mb-0.5">Cleaning</span>
+<span class="text-[11px] text-brand-slate">From ₹399</span>
+<span class="mt-2 text-[9px] uppercase font-extrabold tracking-wider text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-md">Book in 2m</span>
+</a>
+<!-- 4: Painting (Pink) -->
+<a class="group glass-surface p-4 rounded-2xl aurora-card-hover flex flex-col items-center text-center" href="#">
+<div class="w-13 h-13 p-3 rounded-2xl bg-pink-50 border border-pink-100 text-pink-600 flex items-center justify-center mb-3 group-hover:scale-110 group-hover:bg-pink-100/80 transition-all shadow-sm">
+<span class="material-symbols-outlined text-[26px]">format_paint</span>
+</div>
+<span class="font-display font-bold text-xs text-brand-navy mb-0.5">Painting</span>
+<span class="text-[11px] text-brand-slate">From ₹499</span>
+<span class="mt-2 text-[9px] uppercase font-extrabold tracking-wider text-pink-700 bg-pink-50 px-2 py-0.5 rounded-md">Book in 2m</span>
+</a>
+<!-- 5: Carpentry (Warm Amber) -->
+<a class="group glass-surface p-4 rounded-2xl aurora-card-hover flex flex-col items-center text-center" href="#">
+<div class="w-13 h-13 p-3 rounded-2xl bg-orange-50 border border-orange-100 text-orange-600 flex items-center justify-center mb-3 group-hover:scale-110 group-hover:bg-orange-100/80 transition-all shadow-sm">
+<span class="material-symbols-outlined text-[26px]">carpenter</span>
+</div>
+<span class="font-display font-bold text-xs text-brand-navy mb-0.5">Carpentry</span>
+<span class="text-[11px] text-brand-slate">From ₹249</span>
+<span class="mt-2 text-[9px] uppercase font-extrabold tracking-wider text-orange-700 bg-orange-50 px-2 py-0.5 rounded-md">Book in 2m</span>
+</a>
+<!-- 6: Appliances (Purple) -->
+<a class="group glass-surface p-4 rounded-2xl aurora-card-hover flex flex-col items-center text-center" href="#">
+<div class="w-13 h-13 p-3 rounded-2xl bg-purple-50 border border-purple-100 text-brand-purple flex items-center justify-center mb-3 group-hover:scale-110 group-hover:bg-purple-100/80 transition-all shadow-sm">
+<span class="material-symbols-outlined text-[26px]">home_repair_service</span>
+</div>
+<span class="font-display font-bold text-xs text-brand-navy mb-0.5">Appliances</span>
+<span class="text-[11px] text-brand-slate">From ₹299</span>
+<span class="mt-2 text-[9px] uppercase font-extrabold tracking-wider text-brand-purple bg-purple-50 px-2 py-0.5 rounded-md">Book in 2m</span>
+</a>
+<!-- 7: Moving (Blue) -->
+<a class="group glass-surface p-4 rounded-2xl aurora-card-hover flex flex-col items-center text-center" href="#">
+<div class="w-13 h-13 p-3 rounded-2xl bg-blue-50 border border-blue-100 text-blue-600 flex items-center justify-center mb-3 group-hover:scale-110 group-hover:bg-blue-100/80 transition-all shadow-sm">
+<span class="material-symbols-outlined text-[26px]">local_shipping</span>
+</div>
+<span class="font-display font-bold text-xs text-brand-navy mb-0.5">Moving</span>
+<span class="text-[11px] text-brand-slate">From ₹799</span>
+<span class="mt-2 text-[9px] uppercase font-extrabold tracking-wider text-blue-700 bg-blue-50 px-2 py-0.5 rounded-md">Book in 2m</span>
+</a>
+<!-- 8: More (Lavender) -->
+<a class="group glass-surface p-4 rounded-2xl aurora-card-hover flex flex-col items-center text-center" href="#">
+<div class="w-13 h-13 p-3 rounded-2xl bg-slate-100 border border-slate-200 text-slate-700 flex items-center justify-center mb-3 group-hover:scale-110 group-hover:bg-slate-200 transition-all shadow-sm">
+<span class="material-symbols-outlined text-[26px]">grid_view</span>
+</div>
+<span class="font-display font-bold text-xs text-brand-navy mb-0.5">More</span>
+<span class="text-[11px] text-brand-slate">30+ Tasks</span>
+<span class="mt-2 text-[9px] uppercase font-extrabold tracking-wider text-slate-700 bg-slate-100 px-2 py-0.5 rounded-md">See All</span>
+</a>
+</div>
+</section>
+<!-- PLATFORM STATISTICS STRIP -->
+<section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 w-full">
+<div class="glass-surface-accent rounded-3xl p-6 lg:p-8 shadow-glass-lg relative overflow-hidden">
+<!-- Aurora inner shimmer gradient line -->
+<div class="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-brand-pink via-brand-purple to-brand-cyan"></div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 divide-y sm:divide-y-0 lg:divide-x divide-purple-100">
+<!-- Stat 1 -->
+<div class="flex items-center gap-4 pt-3 sm:pt-0 lg:px-4 first:pl-0">
+<div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-pink-500/10 to-brand-pink/20 border border-pink-200/50 flex items-center justify-center text-brand-pink shrink-0">
+<span class="material-symbols-outlined text-[30px]" style="font-variation-settings: &quot;FILL&quot; 1;">shield_with_heart</span>
+</div>
+<div>
+<div class="font-display font-extrabold text-3xl bg-gradient-to-r from-brand-pink to-brand-purple bg-clip-text text-transparent">
+                5,200+
+              </div>
+<p class="font-display font-bold text-xs text-brand-navy">Verified Professionals</p>
+<p class="text-[11px] text-brand-slate">KYC &amp; trade-skill assessed</p>
+</div>
+</div>
+<!-- Stat 2 -->
+<div class="flex items-center gap-4 pt-3 sm:pt-0 lg:px-4">
+<div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-purple-500/10 to-brand-purple/20 border border-purple-200/50 flex items-center justify-center text-brand-purple shrink-0">
+<span class="material-symbols-outlined text-[30px]" style="font-variation-settings: &quot;FILL&quot; 1;">task_alt</span>
+</div>
+<div>
+<div class="font-display font-extrabold text-3xl bg-gradient-to-r from-brand-purple to-brand-blue bg-clip-text text-transparent">
+                25,400+
+              </div>
+<p class="font-display font-bold text-xs text-brand-navy">Jobs Completed</p>
+<p class="text-[11px] text-brand-slate">98.2% on-time resolution</p>
+</div>
+</div>
+<!-- Stat 3 -->
+<div class="flex items-center gap-4 pt-3 sm:pt-0 lg:px-4">
+<div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-amber-500/10 to-amber-500/20 border border-amber-200/50 flex items-center justify-center text-amber-500 shrink-0">
+<span class="material-symbols-outlined text-[30px]" style="font-variation-settings: &quot;FILL&quot; 1;">star</span>
+</div>
+<div>
+<div class="font-display font-extrabold text-3xl bg-gradient-to-r from-amber-500 to-orange-500 bg-clip-text text-transparent">
+                4.8 ★
+              </div>
+<p class="font-display font-bold text-xs text-brand-navy">Average Satisfaction</p>
+<p class="text-[11px] text-brand-slate">From 12,000+ customer reviews</p>
+</div>
+</div>
+<!-- Stat 4 -->
+<div class="flex items-center gap-4 pt-3 sm:pt-0 lg:px-4 last:pr-0">
+<div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-blue-500/10 to-brand-cyan/20 border border-blue-200/50 flex items-center justify-center text-brand-blue shrink-0">
+<span class="material-symbols-outlined text-[30px]" style="font-variation-settings: &quot;FILL&quot; 1;">category</span>
+</div>
+<div>
+<div class="font-display font-extrabold text-3xl bg-gradient-to-r from-brand-blue to-cyan-500 bg-clip-text text-transparent">
+                40+
+              </div>
+<p class="font-display font-bold text-xs text-brand-navy">Service Categories</p>
+<p class="text-[11px] text-brand-slate">Hyperlocal dispatch coverage</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- FEATURED PROFESSIONALS (MEET YOUR LOCAL PROFESSIONALS) -->
+<section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 w-full" id="find-professionals">
+<div class="flex flex-col sm:flex-row sm:items-end justify-between mb-8 gap-4">
+<div>
+<div class="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-brand-pink mb-1">
+<span class="material-symbols-outlined text-[16px]">verified_user</span>
+<span class="">Handpicked &amp; Verified</span>
+</div>
+<h2 class="font-display font-extrabold text-2xl sm:text-3xl text-brand-navy tracking-tight">
+            Meet Your Local Professionals
+          </h2>
+<p class="text-sm text-brand-slate mt-1">Skilled hands. Trusted service. Fair prices.</p>
+</div>
+<div class="flex items-center gap-2">
+<button class="w-9 h-9 rounded-xl bg-white border border-slate-200 text-brand-slate hover:text-brand-navy flex items-center justify-center shadow-sm hover:scale-105 transition-all">
+<span class="material-symbols-outlined text-[20px]">chevron_left</span>
+</button>
+<button class="w-9 h-9 rounded-xl bg-white border border-slate-200 text-brand-slate hover:text-brand-navy flex items-center justify-center shadow-sm hover:scale-105 transition-all">
+<span class="material-symbols-outlined text-[20px]">chevron_right</span>
+</button>
+</div>
+</div>
+<!-- 4-Column Professional Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- Professional 1: Rahul Sharma -->
+<div class="glass-surface rounded-3xl p-5 aurora-card-hover border border-white flex flex-col justify-between group">
+<div>
+<!-- Image & Favorite Bar -->
+<div class="relative w-full aspect-[4/3] rounded-2xl overflow-hidden mb-4 bg-slate-100">
+<img alt="Rahul Sharma - Master Plumber" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBlbRYfHi9XgeNfs8mtifR3Nuv7-wjidY2BjRzzIpIX4-WF20STXry8qvgnVGQ9C6Y1XORpMJycHYqVTGhDgumhIdvT3XMpWXHBH6DS4YZl02JTGh9mMUHFJZoaM7N-jExSciHxO2VoGQx1OhS63189qi88usKe_0BcwDMrIfRlK9zy42mBcR9p3Xr3kwzt_nDk7BpyInK7kIHQJ5s74eu5e61Eb4x1nOBliENL2OUt">
+<button aria-label="Favorite" class="absolute top-2.5 right-2.5 w-8 h-8 rounded-full bg-white/90 backdrop-blur-md flex items-center justify-center text-slate-400 hover:text-brand-pink shadow-sm transition-colors">
+<span class="material-symbols-outlined text-[18px]">favorite</span>
+</button>
+<div class="absolute bottom-2.5 left-2.5 px-2.5 py-1 rounded-full bg-emerald-500/90 backdrop-blur-sm text-white text-[10px] font-bold flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-white animate-pulse"></span>
+<span class="">Available Today</span>
+</div>
+</div>
+<!-- Profile Info -->
+<div class="flex items-start justify-between gap-2 mb-2">
+<div>
+<h3 class="font-display font-extrabold text-base text-brand-navy leading-snug">Rahul Sharma</h3>
+<p class="text-xs text-brand-slate font-medium">Master Plumber · 8 yrs exp</p>
+</div>
+<div class="flex items-center gap-1 bg-amber-50 px-2 py-0.5 rounded-lg border border-amber-100 shrink-0">
+<span class="material-symbols-outlined text-[14px] text-amber-500" style="font-variation-settings: &quot;FILL&quot; 1;">star</span>
+<span class="text-xs font-bold text-brand-navy">4.9</span>
+</div>
+</div>
+<!-- Quick Job Stats -->
+<p class="text-[11px] text-brand-slate mb-3">
+<strong class="text-brand-navy font-semibold">340+ jobs</strong> completed in Andheri West
+            </p>
+<!-- Verification Badges -->
+<div class="flex flex-wrap gap-1.5 mb-4">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-cyan-50 border border-cyan-100 text-cyan-800 text-[10px] font-semibold">
+<span class="material-symbols-outlined text-[12px] text-cyan-600">badge</span>
+                Identity Checked
+              </span>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-purple-50 border border-purple-100 text-purple-800 text-[10px] font-semibold">
+<span class="material-symbols-outlined text-[12px] text-brand-purple">verified</span>
+                Skill Verified
+              </span>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-pink-50 border border-pink-100 text-pink-700 text-[10px] font-semibold">
+                Top Rated
+              </span>
+</div>
+</div>
+<!-- Price & Action CTA -->
+<div class="pt-3 border-t border-slate-100 flex items-center justify-between gap-3">
+<div>
+<span class="text-[10px] text-brand-slate uppercase font-bold tracking-wider">Rate</span>
+<p class="font-display font-extrabold text-base text-brand-navy">₹249<span class="text-xs font-normal text-brand-slate">/hr</span></p>
+</div>
+<button class="px-4 py-2 rounded-xl bg-white hover:bg-slate-50 border border-slate-200/90 text-xs font-bold text-brand-navy group-hover:bg-gradient-to-r group-hover:from-brand-pink group-hover:to-brand-purple group-hover:text-white group-hover:border-transparent transition-all shadow-sm">
+              View Profile
+            </button>
+</div>
+</div>
+<!-- Professional 2: Priya Nair -->
+<div class="glass-surface rounded-3xl p-5 aurora-card-hover border border-white flex flex-col justify-between group">
+<div>
+<!-- Image & Favorite Bar -->
+<div class="relative w-full aspect-[4/3] rounded-2xl overflow-hidden mb-4 bg-slate-100">
+<img alt="Priya Nair - Deep Cleaning Specialist" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDajyQlKbFX4ShLZNLp8Bqw0RdgzwEEjtj1g0dzbCJ2RePzNDVriD6OCd_eetb3zbBpDjsZSRj6JBgcPMSZBFYQTWo6YwJ0QfMrZ-uERikq4jcVcT40_T3DtAnJETHVLWWiQK_3HsaUqBN5HKJeEut7F-iAkRCCFdTtWep1h0GI0-GpK1dYWmHVsR12U-ZpqW0xMOLITcsb6K3-tNqSNaO_JReHxibQzb8P7KrBjjcr">
+<button aria-label="Favorite" class="absolute top-2.5 right-2.5 w-8 h-8 rounded-full bg-white/90 backdrop-blur-md flex items-center justify-center text-slate-400 hover:text-brand-pink shadow-sm transition-colors">
+<span class="material-symbols-outlined text-[18px]">favorite</span>
+</button>
+<div class="absolute bottom-2.5 left-2.5 px-2.5 py-1 rounded-full bg-blue-600/90 backdrop-blur-sm text-white text-[10px] font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px]">schedule</span>
+<span class="">Book in 2h</span>
+</div>
+</div>
+<!-- Profile Info -->
+<div class="flex items-start justify-between gap-2 mb-2">
+<div>
+<h3 class="font-display font-extrabold text-base text-brand-navy leading-snug">Priya Nair</h3>
+<p class="text-xs text-brand-slate font-medium">Deep Cleaning · Eco-Friendly</p>
+</div>
+<div class="flex items-center gap-1 bg-amber-50 px-2 py-0.5 rounded-lg border border-amber-100 shrink-0">
+<span class="material-symbols-outlined text-[14px] text-amber-500" style="font-variation-settings: &quot;FILL&quot; 1;">star</span>
+<span class="text-xs font-bold text-brand-navy">4.95</span>
+</div>
+</div>
+<!-- Quick Job Stats -->
+<p class="text-[11px] text-brand-slate mb-3">
+<strong class="text-brand-navy font-semibold">520+ jobs</strong> completed in Bandra / Khar
+            </p>
+<!-- Verification Badges -->
+<div class="flex flex-wrap gap-1.5 mb-4">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-cyan-50 border border-cyan-100 text-cyan-800 text-[10px] font-semibold">
+<span class="material-symbols-outlined text-[12px] text-cyan-600">verified_user</span>
+                Background Checked
+              </span>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-purple-50 border border-purple-100 text-purple-800 text-[10px] font-semibold">
+<span class="material-symbols-outlined text-[12px] text-brand-purple">verified</span>
+                Skill Verified
+              </span>
+</div>
+</div>
+<!-- Price & Action CTA -->
+<div class="pt-3 border-t border-slate-100 flex items-center justify-between gap-3">
+<div>
+<span class="text-[10px] text-brand-slate uppercase font-bold tracking-wider">Rate</span>
+<p class="font-display font-extrabold text-base text-brand-navy">₹399<span class="text-xs font-normal text-brand-slate">/room</span></p>
+</div>
+<button class="px-4 py-2 rounded-xl bg-white hover:bg-slate-50 border border-slate-200/90 text-xs font-bold text-brand-navy group-hover:bg-gradient-to-r group-hover:from-brand-pink group-hover:to-brand-purple group-hover:text-white group-hover:border-transparent transition-all shadow-sm">
+              View Profile
+            </button>
+</div>
+</div>
+<!-- Professional 3: Amit Kumar -->
+<div class="glass-surface rounded-3xl p-5 aurora-card-hover border border-white flex flex-col justify-between group">
+<div>
+<!-- Image & Favorite Bar -->
+<div class="relative w-full aspect-[4/3] rounded-2xl overflow-hidden mb-4 bg-slate-100">
+<img alt="Amit Kumar - Certified Electrician" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA1upnGAWTDnUmmQgu9Amt1V3i6gKBC-48YqcM01VH6Lm1WOS5BeLUp9HmTn-5dikHCp9PnXYw2p_vhIyjauaLdAjK8txOr6i1H1sqfLrACuYKOTbvWKIkG-S7b1p7O8vsRMowgMlsH6XFuqjItP-8f4WsG6iJZ4gsdwHIwdG8np_SED-RwSHTJZpS-MszknwOoupmYLsUsNUqQ3PwUZydNZFh38JBZ9FidH7rv5ego">
+<button aria-label="Favorite" class="absolute top-2.5 right-2.5 w-8 h-8 rounded-full bg-white/90 backdrop-blur-md flex items-center justify-center text-slate-400 hover:text-brand-pink shadow-sm transition-colors">
+<span class="material-symbols-outlined text-[18px]">favorite</span>
+</button>
+<div class="absolute bottom-2.5 left-2.5 px-2.5 py-1 rounded-full bg-emerald-500/90 backdrop-blur-sm text-white text-[10px] font-bold flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-white animate-pulse"></span>
+<span class="">Available Today</span>
+</div>
+</div>
+<!-- Profile Info -->
+<div class="flex items-start justify-between gap-2 mb-2">
+<div>
+<h3 class="font-display font-extrabold text-base text-brand-navy leading-snug">Amit Kumar</h3>
+<p class="text-xs text-brand-slate font-medium">Certified Electrician · Wiring &amp; MCB</p>
+</div>
+<div class="flex items-center gap-1 bg-amber-50 px-2 py-0.5 rounded-lg border border-amber-100 shrink-0">
+<span class="material-symbols-outlined text-[14px] text-amber-500" style="font-variation-settings: &quot;FILL&quot; 1;">star</span>
+<span class="text-xs font-bold text-brand-navy">4.85</span>
+</div>
+</div>
+<!-- Quick Job Stats -->
+<p class="text-[11px] text-brand-slate mb-3">
+<strong class="text-brand-navy font-semibold">280+ jobs</strong> completed in Dadar / Matunga
+            </p>
+<!-- Verification Badges -->
+<div class="flex flex-wrap gap-1.5 mb-4">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-cyan-50 border border-cyan-100 text-cyan-800 text-[10px] font-semibold">
+<span class="material-symbols-outlined text-[12px] text-cyan-600">badge</span>
+                Identity Checked
+              </span>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-blue-50 border border-blue-100 text-blue-800 text-[10px] font-semibold">
+<span class="material-symbols-outlined text-[12px] text-blue-600">history_edu</span>
+                Work History Verified
+              </span>
+</div>
+</div>
+<!-- Price & Action CTA -->
+<div class="pt-3 border-t border-slate-100 flex items-center justify-between gap-3">
+<div>
+<span class="text-[10px] text-brand-slate uppercase font-bold tracking-wider">Rate</span>
+<p class="font-display font-extrabold text-base text-brand-navy">₹199<span class="text-xs font-normal text-brand-slate">/hr</span></p>
+</div>
+<button class="px-4 py-2 rounded-xl bg-white hover:bg-slate-50 border border-slate-200/90 text-xs font-bold text-brand-navy group-hover:bg-gradient-to-r group-hover:from-brand-pink group-hover:to-brand-purple group-hover:text-white group-hover:border-transparent transition-all shadow-sm">
+              View Profile
+            </button>
+</div>
+</div>
+<!-- Professional 4: Vikram Patel -->
+<div class="glass-surface rounded-3xl p-5 aurora-card-hover border border-white flex flex-col justify-between group">
+<div>
+<!-- Image & Favorite Bar -->
+<div class="relative w-full aspect-[4/3] rounded-2xl overflow-hidden mb-4 bg-slate-100">
+<img alt="Vikram Patel - Senior Carpenter" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDv62E6e7bYIm7rdnq644vq2NKtf5a4aIjrka0K14U1B7gq8t6E0-k4ltJmBdiAe6V12RiHFKQESgeu623tHYO2kTErWxhGBKlqXCT2dT0PgiU4cUWISts_ba3xaF_ZbAiMvjX4LJte7Yq72CDqCFiiTaOEukfbbnv7hiC6I4suznmjyR4fFVrpyPuGWZkqs104sK9JYBncawGP3M9LOGXpPgSWsrCcWekK69QCuxGN">
+<button aria-label="Favorite" class="absolute top-2.5 right-2.5 w-8 h-8 rounded-full bg-white/90 backdrop-blur-md flex items-center justify-center text-slate-400 hover:text-brand-pink shadow-sm transition-colors">
+<span class="material-symbols-outlined text-[18px]">favorite</span>
+</button>
+<div class="absolute bottom-2.5 left-2.5 px-2.5 py-1 rounded-full bg-gradient-to-r from-brand-pink to-brand-purple text-white text-[10px] font-bold flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-[12px]">local_fire_department</span>
+<span class="">New Talent</span>
+</div>
+</div>
+<!-- Profile Info -->
+<div class="flex items-start justify-between gap-2 mb-2">
+<div>
+<h3 class="font-display font-extrabold text-base text-brand-navy leading-snug">Vikram Patel</h3>
+<p class="text-xs text-brand-slate font-medium">Senior Carpenter · Custom Furniture</p>
+</div>
+<div class="flex items-center gap-1 bg-amber-50 px-2 py-0.5 rounded-lg border border-amber-100 shrink-0">
+<span class="material-symbols-outlined text-[14px] text-amber-500" style="font-variation-settings: &quot;FILL&quot; 1;">star</span>
+<span class="text-xs font-bold text-brand-navy">4.90</span>
+</div>
+</div>
+<!-- Quick Job Stats -->
+<p class="text-[11px] text-brand-slate mb-3">
+<strong class="text-brand-navy font-semibold">190+ jobs</strong> completed in Thane &amp; Mulund
+            </p>
+<!-- Verification Badges -->
+<div class="flex flex-wrap gap-1.5 mb-4">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-purple-50 border border-purple-100 text-purple-800 text-[10px] font-semibold">
+<span class="material-symbols-outlined text-[12px] text-brand-purple">verified</span>
+                Skill Verified
+              </span>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-gradient-to-r from-purple-100 to-pink-100 text-purple-900 text-[10px] font-bold">
+                ⭐ Rising Star
+              </span>
+</div>
+</div>
+<!-- Price & Action CTA -->
+<div class="pt-3 border-t border-slate-100 flex items-center justify-between gap-3">
+<div>
+<span class="text-[10px] text-brand-slate uppercase font-bold tracking-wider">Rate</span>
+<p class="font-display font-extrabold text-base text-brand-navy">₹299<span class="text-xs font-normal text-brand-slate">/hr</span></p>
+</div>
+<button class="px-4 py-2 rounded-xl bg-white hover:bg-slate-50 border border-slate-200/90 text-xs font-bold text-brand-navy group-hover:bg-gradient-to-r group-hover:from-brand-pink group-hover:to-brand-purple group-hover:text-white group-hover:border-transparent transition-all shadow-sm">
+              View Profile
+            </button>
+</div>
+</div>
+</div>
+</section>
+<!-- HOW KAAMSETU WORKS WORKFLOW SECTION -->
+<section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 w-full" id="how-it-works">
+<div class="text-center max-w-2xl mx-auto mb-12">
+<div class="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-brand-blue mb-1">
+<span class="material-symbols-outlined text-[16px]">touch_app</span>
+<span class="">Simple, Transparent &amp; Safe</span>
+</div>
+<h2 class="font-display font-extrabold text-3xl sm:text-4xl text-brand-navy tracking-tight">
+          How Kaarya<span style="font-size: 2.25rem; letter-spacing: -0.025em;">&nbsp;Works</span><br></h2>
+<p class="text-sm text-brand-slate mt-2">
+          From quick task posting to guaranteed satisfaction in four clear steps
+        </p>
+</div>
+<!-- 4-Step Interactive Aurora Flow -->
+<div class="relative grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+<!-- Step 1 -->
+<div class="glass-surface rounded-3xl p-6 aurora-card-hover border border-white relative flex flex-col items-start">
+<span class="font-display font-black text-4xl text-purple-200/70 absolute top-4 right-5">01</span>
+<div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-brand-pink to-brand-purple text-white flex items-center justify-center mb-5 shadow-aurora-glow-sm">
+<span class="material-symbols-outlined text-[24px]">edit_document</span>
+</div>
+<h3 class="font-display font-extrabold text-lg text-brand-navy mb-1.5">Post a Job</h3>
+<p class="text-xs text-brand-slate leading-relaxed">
+            Describe your task, specify your timing, and set your target budget in under 60 seconds.
+          </p>
+</div>
+<!-- Step 2 -->
+<div class="glass-surface rounded-3xl p-6 aurora-card-hover border border-white relative flex flex-col items-start">
+<span class="font-display font-black text-4xl text-purple-200/70 absolute top-4 right-5">02</span>
+<div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-brand-purple to-brand-blue text-white flex items-center justify-center mb-5 shadow-aurora-glow-sm">
+<span class="material-symbols-outlined text-[24px]">connect_without_contact</span>
+</div>
+<h3 class="font-display font-extrabold text-lg text-brand-navy mb-1.5">Get Matched</h3>
+<p class="text-xs text-brand-slate leading-relaxed">
+            Receive upfront bids and availability confirmations from KYC-verified local professionals.
+          </p>
+</div>
+<!-- Step 3 -->
+<div class="glass-surface rounded-3xl p-6 aurora-card-hover border border-white relative flex flex-col items-start">
+<span class="font-display font-black text-4xl text-purple-200/70 absolute top-4 right-5">03</span>
+<div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-brand-blue to-brand-cyan text-white flex items-center justify-center mb-5 shadow-aurora-glow-sm">
+<span class="material-symbols-outlined text-[24px]">compare_arrows</span>
+</div>
+<h3 class="font-display font-extrabold text-lg text-brand-navy mb-1.5">Compare &amp; Choose</h3>
+<p class="text-xs text-brand-slate leading-relaxed">
+            Review past customer ratings, verified trade badges, distance, and fair hourly rates.
+          </p>
+</div>
+<!-- Step 4 -->
+<div class="glass-surface rounded-3xl p-6 aurora-card-hover border border-white relative flex flex-col items-start">
+<span class="font-display font-black text-4xl text-purple-200/70 absolute top-4 right-5">04</span>
+<div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-emerald-500 to-teal-400 text-white flex items-center justify-center mb-5 shadow-aurora-glow-sm">
+<span class="material-symbols-outlined text-[24px]" style="font-variation-settings: &quot;FILL&quot; 1;">task_alt</span>
+</div>
+<h3 class="font-display font-extrabold text-lg text-brand-navy mb-1.5">Get It Done</h3>
+<p class="text-xs text-brand-slate leading-relaxed">
+            Track live dispatch, release payment upon satisfaction, and build your trusted local circle.
+          </p>
+</div>
+</div>
+<!-- WORKER REGISTRATION PROMOTION GLASS CARD -->
+<div class="relative rounded-3xl p-8 lg:p-10 glass-surface-accent border border-purple-200/60 shadow-glass-lg overflow-hidden" id="for-workers">
+<div class="absolute -right-10 -bottom-10 w-80 h-80 bg-gradient-to-tr from-brand-pink/20 to-brand-purple/20 rounded-full blur-3xl pointer-events-none"></div>
+<div class="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-8">
+<div class="max-w-2xl">
+<div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-purple-100 text-brand-purple font-bold text-xs mb-3">
+<span class="material-symbols-outlined text-[14px]">handshake</span>
+<span class="">Worker Empowerment Initiative</span>
+</div>
+<h3 class="font-display font-extrabold text-2xl sm:text-3xl text-brand-navy tracking-tight mb-2">
+              Are you a skilled technician or craftsperson?
+            </h3>
+<p class="text-sm text-brand-slate leading-relaxed">
+              Join KaamSetu with zero initial commission. Get direct neighborhood job requests, build a verified digital reputation, and receive guaranteed on-time bank payments.
+            </p>
+<div class="flex flex-wrap items-center gap-4 mt-4 text-xs font-semibold text-brand-navy">
+<span class="flex items-center gap-1.5 text-emerald-700">
+<span class="material-symbols-outlined text-[16px]">check_circle</span>
+                Keep 100% of direct tips
+              </span>
+<span class="flex items-center gap-1.5 text-emerald-700">
+<span class="material-symbols-outlined text-[16px]">check_circle</span>
+                Free accidental insurance
+              </span>
+<span class="flex items-center gap-1.5 text-emerald-700">
+<span class="material-symbols-outlined text-[16px]">check_circle</span>
+                Work on your schedule
+              </span>
+</div>
+</div>
+<div class="flex items-center gap-3 shrink-0">
+<button class="px-6 py-3.5 rounded-xl aurora-btn-primary text-white font-display font-bold text-sm shadow-aurora-glow flex items-center gap-2">
+<span class="">Join as a Worker</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- LIVE HYPERLOCAL ACTIVE BANNER -->
+<section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 w-full">
+<div class="relative glass-surface rounded-3xl p-6 sm:p-8 shadow-glass border border-white flex flex-col md:flex-row items-center justify-between gap-6">
+<div class="flex items-center gap-4">
+<div class="relative flex items-center justify-center w-12 h-12 rounded-2xl bg-gradient-to-tr from-brand-pink to-brand-purple text-white shrink-0 shadow-aurora-glow-sm">
+<span class="material-symbols-outlined text-[24px]">radar</span>
+<span class="animate-ping absolute inline-flex h-full w-full rounded-2xl bg-brand-pink opacity-30"></span>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<h3 class="font-display font-extrabold text-base sm:text-lg text-brand-navy">
+                38 Pros active near Mumbai Central right now
+              </h3>
+<span class="inline-block w-2.5 h-2.5 rounded-full bg-emerald-500 shadow-sm animate-pulse"></span>
+</div>
+<p class="text-xs text-brand-slate mt-0.5">
+              Instant dispatch ready for emergency plumbing, circuit breaks, and urgent lock repairs.
+            </p>
+</div>
+</div>
+<div class="flex items-center gap-3 shrink-0 w-full sm:w-auto">
+<button class="flex-1 sm:flex-initial px-5 py-2.5 rounded-xl bg-white hover:bg-slate-50 border border-slate-200 text-brand-navy text-xs font-bold shadow-sm transition-all hover:scale-105">
+            View Active Map
+          </button>
+<button class="flex-1 sm:flex-initial px-5 py-2.5 rounded-xl aurora-btn-primary text-white text-xs font-bold shadow-aurora-glow transition-all">
+            Book Urgent Pro
+          </button>
+</div>
+</div>
+</section>
+</main>
+<!-- POLISHED AURORA GLASS FOOTER -->
+<footer class="w-full glass-surface border-t border-slate-200/80 py-12 relative z-10" id="about">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex flex-col md:flex-row items-center justify-between gap-6 pb-8 border-b border-slate-200/60">
+<!-- Brand Signature -->
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-brand-pink via-brand-purple to-brand-blue p-[1.5px] shadow-sm">
+<div class="w-full h-full bg-white rounded-[10px] flex items-center justify-center">
+<span class="material-symbols-outlined text-transparent bg-clip-text bg-gradient-to-r from-brand-pink to-brand-purple text-[18px]" style="font-variation-settings: &quot;FILL&quot; 1;">
+                auto_awesome
+              </span>
+</div>
+</div>
+<div>
+<span class="font-display font-extrabold text-lg text-brand-navy tracking-tight">Kaar<span class="bg-gradient-to-r from-brand-pink via-brand-purple to-brand-blue bg-clip-text text-transparent">ya</span></span>
+<p class="text-[11px] text-brand-slate">Empowering hyperlocal verified trade micro-entrepreneurs.</p>
+</div>
+</div>
+<!-- Trust Guarantees -->
+<div class="flex flex-wrap items-center gap-4 text-xs font-semibold text-brand-slate">
+<span class="flex items-center gap-1 text-slate-700">
+<span class="material-symbols-outlined text-[16px] text-emerald-600">verified</span>
+            100% Aadhaar &amp; Skill Verified
+          </span>
+<span class="flex items-center gap-1 text-slate-700">
+<span class="material-symbols-outlined text-[16px] text-brand-blue">lock</span>
+            Secure Escrow Payments
+          </span>
+<span class="flex items-center gap-1 text-slate-700">
+<span class="material-symbols-outlined text-[16px] text-brand-pink">support_agent</span>
+            24/7 Citizen Support
+          </span>
+</div>
+</div>
+<!-- Bottom Meta & Legal Links -->
+<div class="flex flex-col sm:flex-row items-center justify-between gap-4 pt-6 text-xs text-brand-slate">
+<p class="">© 2025 KaamSetu Technologies Private Limited. All rights reserved.</p>
+<div class="flex items-center gap-6 font-medium">
+<a class="hover:text-brand-purple transition-colors" href="#">Privacy Policy</a>
+<a class="hover:text-brand-purple transition-colors" href="#">Terms of Service</a>
+<a class="hover:text-brand-purple transition-colors" href="#">Safety Standards</a>
+<a class="hover:text-brand-purple transition-colors" href="#">Worker Welfare Charter</a>
+</div>
+</div>
+</div>
+</footer>
+
+
+
+
+</body></html>
