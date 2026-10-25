@@ -221,88 +221,8 @@ export default function CompareOffers() {
         <div className="absolute -bottom-24 left-1/3 h-[520px] w-[520px] rounded-full bg-gradient-to-tr from-surface-container-lowest via-secondary-fixed-dim/15 to-primary-fixed-dim/15 blur-[160px]" />
       </div>
 
-      {/* COMPACT KAARYA HEADER WITH ACTIVE "MY JOBS" NAVIGATION */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-xl border-b border-slate-100 shadow-[0_1px_6px_rgba(0,0,0,0.03)]">
-        <div className="h-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-4">
-          <div className="flex items-center gap-6 sm:gap-8">
-            <Link to="/" className="flex items-center gap-2 group">
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-primary-container to-tertiary flex items-center justify-center text-on-primary shadow-sm group-hover:scale-105 transition-transform">
-                <span className="material-symbols-outlined text-[18px]">handshake</span>
-              </div>
-              <div className="flex flex-col">
-                <span className="font-headline-sm text-[17px] tracking-tight text-on-surface leading-none font-bold">
-                  Kaarya
-                </span>
-                <span className="font-label-sm text-[10px] text-secondary font-semibold uppercase tracking-wider">
-                  Verified Pros
-                </span>
-              </div>
-            </Link>
-
-            <nav className="hidden lg:flex items-center gap-1">
-              <Link
-                to="/"
-                className="font-label-md text-on-surface-variant hover:text-on-surface hover:bg-slate-100/70 px-3 py-1.5 rounded-full transition-all duration-150"
-              >
-                Home
-              </Link>
-              <Link
-                to="/professionals"
-                className="font-label-md text-on-surface-variant hover:text-on-surface hover:bg-slate-100/70 px-3 py-1.5 rounded-full transition-all duration-150"
-              >
-                Find Professionals
-              </Link>
-              <Link
-                to="/my-bookings"
-                className="font-label-md bg-slate-100/90 text-primary font-bold px-3 py-1.5 rounded-full shadow-sm transition-all duration-150 flex items-center gap-1"
-              >
-                <span>My Jobs</span>
-                <span className="w-1.5 h-1.5 rounded-full bg-primary" />
-              </Link>
-              <a
-                href="/#how-it-works"
-                className="font-label-md text-on-surface-variant hover:text-on-surface hover:bg-slate-100/70 px-3 py-1.5 rounded-full transition-all duration-150"
-              >
-                How It Works
-              </a>
-              <Link
-                to="/worker-dashboard"
-                className="font-label-md text-on-surface-variant hover:text-on-surface hover:bg-slate-100/70 px-3 py-1.5 rounded-full transition-all duration-150"
-              >
-                For Workers
-              </Link>
-              <a
-                href="/#about"
-                className="font-label-md text-on-surface-variant hover:text-on-surface hover:bg-slate-100/70 px-3 py-1.5 rounded-full transition-all duration-150"
-              >
-                About
-              </a>
-            </nav>
-          </div>
-
-          <div className="flex items-center gap-3">
-            <div className="hidden sm:flex items-center gap-1 bg-slate-100/80 px-2.5 py-1 rounded-full cursor-pointer hover:bg-slate-200/70 transition-colors">
-              <span className="material-symbols-outlined text-secondary text-[16px]">location_on</span>
-              <span className="font-label-sm text-on-surface font-semibold">Mumbai, MH</span>
-              <span className="material-symbols-outlined text-on-surface-variant text-[14px]">expand_more</span>
-            </div>
-            <button
-              aria-label="Notifications"
-              type="button"
-              className="relative p-1.5 rounded-full text-on-surface-variant hover:text-on-surface hover:bg-slate-100 transition-colors"
-            >
-              <span className="material-symbols-outlined text-[20px]">notifications</span>
-              <span className="absolute top-1 right-1 w-1.5 h-1.5 rounded-full bg-primary" />
-            </button>
-            <div className="w-7 h-7 rounded-full bg-primary/10 text-primary flex items-center justify-center cursor-pointer border border-primary/20">
-              <span className="material-symbols-outlined text-[16px]">person</span>
-            </div>
-          </div>
-        </div>
-      </header>
-
       {/* MAIN CONTAINER */}
-      <main className="relative z-10 w-full pt-20 pb-16 min-h-[calc(100vh-64px)] flex justify-center">
+      <main className="relative z-10 w-full pt-6 sm:pt-8 pb-16 min-h-[calc(100vh-64px)] flex justify-center">
         <div className="w-full max-w-7xl px-4 sm:px-6 lg:px-8">
           {/* BREADCRUMB & HEADING */}
           <div className="mb-6">

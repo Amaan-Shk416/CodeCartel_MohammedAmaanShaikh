@@ -228,32 +228,7 @@ export default function BookingDetails() {
   if (!resolvedBooking) {
     return (
       <div className="bg-surface font-body-md text-body-md text-on-surface antialiased min-h-screen flex flex-col justify-between">
-        {/* Navigation Header */}
-        <header className="fixed top-0 left-0 right-0 w-full z-50 bg-surface/90 backdrop-blur-xl border-b border-slate-100 shadow-[0_1px_8px_rgba(0,0,0,0.04)]">
-          <div className="h-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-4">
-            <Link to="/" className="flex items-center gap-2 group">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-primary-container via-primary to-secondary flex items-center justify-center shadow-[0_4px_14px_rgba(225,29,116,0.25)] group-hover:scale-105 transition-transform">
-                <span className="material-symbols-outlined text-on-primary text-[22px]">handyman</span>
-              </div>
-              <div className="flex flex-col">
-                <span className="font-headline-md text-headline-md text-on-surface tracking-tight leading-none font-bold">
-                  Kaarya
-                </span>
-                <span className="font-label-sm text-label-sm text-outline tracking-wider uppercase leading-none mt-1">
-                  hyperlocal
-                </span>
-              </div>
-            </Link>
-            <Link
-              to="/my-bookings"
-              className="px-4 py-2 rounded-full border border-slate-200 text-slate-700 hover:bg-slate-50 font-label-md text-xs font-semibold"
-            >
-              My Bookings
-            </Link>
-          </div>
-        </header>
-
-        <main className="w-full pt-28 pb-16 px-4 flex items-center justify-center flex-grow">
+        <main className="w-full pt-10 pb-16 px-4 flex items-center justify-center flex-grow">
           <div className="max-w-md w-full bg-white rounded-2xl border border-slate-200/80 p-8 shadow-sm text-center flex flex-col items-center gap-4">
             <div className="w-14 h-14 rounded-full bg-slate-100 text-slate-500 flex items-center justify-center">
               <span className="material-symbols-outlined text-[28px]">search_off</span>
@@ -288,94 +263,8 @@ export default function BookingDetails() {
 
   return (
     <div className="bg-surface font-body-md text-body-md text-on-surface antialiased min-h-screen flex flex-col justify-between selection:bg-primary-fixed selection:text-on-primary-fixed">
-      {/* 1. FIXED TOP HEADER WITH BRANDING & NAVIGATION */}
-      <header className="fixed top-0 left-0 right-0 w-full z-50 bg-surface/90 backdrop-blur-xl border-b border-slate-100/80 shadow-[0_1px_8px_rgba(0,0,0,0.04)]">
-        <div className="h-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-4">
-          {/* Logo & Location Pill */}
-          <div className="flex items-center gap-6 sm:gap-8">
-            <Link to="/" className="flex items-center gap-2 group">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-primary-container via-primary to-secondary flex items-center justify-center shadow-[0_4px_14px_rgba(225,29,116,0.25)] group-hover:scale-105 transition-transform">
-                <span className="material-symbols-outlined text-on-primary text-[22px]">handyman</span>
-              </div>
-              <div className="flex flex-col">
-                <span className="font-headline-md text-headline-md text-on-surface tracking-tight leading-none font-bold">
-                  Kaarya
-                </span>
-                <span className="font-label-sm text-label-sm text-outline tracking-wider uppercase leading-none mt-1">
-                  hyperlocal
-                </span>
-              </div>
-            </Link>
-
-            <div className="hidden xl:flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-surface-container-lowest border border-slate-100 shadow-[0_2px_8px_rgba(0,0,0,0.03)]">
-              <span className="material-symbols-outlined text-secondary text-[18px]">location_on</span>
-              <span className="font-label-md text-label-md text-on-surface font-medium">Mumbai, MH</span>
-              <span className="material-symbols-outlined text-outline text-[16px]">keyboard_arrow_down</span>
-            </div>
-          </div>
-
-          {/* Desktop Navigation Links */}
-          <nav className="hidden lg:flex items-center gap-1">
-            <Link
-              to="/"
-              className="px-3.5 py-1.5 font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface rounded-full transition-colors"
-            >
-              Home
-            </Link>
-            <Link
-              to="/professionals"
-              className="px-3.5 py-1.5 font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface rounded-full transition-colors"
-            >
-              Find Professionals
-            </Link>
-            <Link
-              to="/my-bookings"
-              className="bg-primary-container text-on-primary-container font-label-lg rounded-full px-3.5 py-1.5 shadow-[0_4px_12px_rgba(225,29,116,0.2)] flex items-center gap-1.5"
-            >
-              <span>My Jobs</span>
-              <span className="w-1.5 h-1.5 rounded-full bg-white" />
-            </Link>
-            <a
-              href="/#how-it-works"
-              className="px-3.5 py-1.5 font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface rounded-full transition-colors"
-            >
-              How It Works
-            </a>
-            <Link
-              to="/worker-dashboard"
-              className="px-3.5 py-1.5 font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface rounded-full transition-colors"
-            >
-              For Workers
-            </Link>
-            <a
-              href="/#about"
-              className="px-3.5 py-1.5 font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface rounded-full transition-colors"
-            >
-              About
-            </a>
-          </nav>
-
-          {/* Notifications & User Profile */}
-          <div className="flex items-center gap-3">
-            <button
-              type="button"
-              className="w-10 h-10 rounded-full bg-surface-container-lowest flex items-center justify-center text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-all relative shadow-[0_2px_6px_rgba(0,0,0,0.02)] border border-slate-100"
-              aria-label="Notifications"
-            >
-              <span className="material-symbols-outlined text-[20px]">notifications</span>
-              <span className="absolute top-2.5 right-2.5 w-2 h-2 rounded-full bg-primary-container ring-2 ring-surface-container-lowest" />
-            </button>
-            <div className="flex items-center gap-2 pl-1">
-              <div className="w-9 h-9 rounded-full bg-gradient-to-tr from-secondary to-tertiary flex items-center justify-center text-on-secondary font-label-md text-label-md shadow-[0_2px_8px_rgba(57,71,221,0.25)] font-bold">
-                KP
-              </div>
-            </div>
-          </div>
-        </div>
-      </header>
-
       {/* 2. MAIN PAGE BODY WITH AURORA GLOWS */}
-      <main className="w-full pt-20 bg-surface min-h-[calc(100vh-140px)] flex-grow">
+      <main className="w-full pt-6 sm:pt-8 bg-surface min-h-[calc(100vh-140px)] flex-grow">
         <div className="flex flex-col w-full relative overflow-hidden">
           {/* Subtle Aurora Radial Ambient Glows matching Stitch Reference */}
           <div className="absolute -top-32 left-1/4 w-[600px] h-[600px] bg-gradient-to-tr from-primary-fixed/20 via-tertiary-fixed/30 to-secondary-fixed/20 blur-3xl pointer-events-none -z-10 rounded-full" />

@@ -1,16 +1,19 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
 import Navbar from './Navbar';
-import Footer from './Footer';
 
+/**
+ * Universal Root Layout for Kaarya
+ * Mounts the shared Navbar persistently across all routes without constraining
+ * full-width edge-to-edge layouts or creating duplicate footers.
+ */
 export default function Layout() {
   return (
-    <div className="flex flex-col min-h-screen bg-kaarya-bg text-kaarya-navy">
+    <div className="flex flex-col min-h-screen bg-transparent text-kaarya-navy selection:bg-kaarya-lavender selection:text-kaarya-purple">
       <Navbar />
-      <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div className="flex-1 w-full flex flex-col">
         <Outlet />
-      </main>
-      <Footer />
+      </div>
     </div>
   );
 }

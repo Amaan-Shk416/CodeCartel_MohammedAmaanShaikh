@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { MOCK_WORKERS } from '../data/mockData';
+import WorkerProfileModal from '../components/workers/WorkerProfileModal';
 
 export default function LandingPage() {
   const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState('');
   const [favorites, setFavorites] = useState({});
+  const [activeModalWorker, setActiveModalWorker] = useState(null);
+  const [selectedTimeSlot, setSelectedTimeSlot] = useState('Today 2:30 PM');
 
   const handleSearchSubmit = (e) => {
     e.preventDefault();
@@ -15,11 +19,25 @@ export default function LandingPage() {
     }
   };
 
-  const toggleFavorite = (workerId) => {
+  const toggleFavorite = (workerId, e) => {
+    if (e) {
+      e.stopPropagation();
+    }
     setFavorites((prev) => ({
       ...prev,
       [workerId]: !prev[workerId],
     }));
+  };
+
+  const handleOpenWorkerModal = (workerId, e) => {
+    if (e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+    const worker = MOCK_WORKERS.find((w) => w.id === workerId);
+    if (worker) {
+      setActiveModalWorker(worker);
+    }
   };
 
   return (
@@ -30,108 +48,8 @@ export default function LandingPage() {
       <div className="aurora-blob-3 top-[1050px] left-1/4"></div>
       <div className="aurora-blob-2 bottom-40 right-10"></div>
 
-      {/* FLOATING GLASS HEADER */}
-      <header className="fixed top-4 inset-x-0 z-50 px-4 md:px-8 max-w-7xl mx-auto">
-        <div className="glass-surface rounded-2xl px-5 py-3 flex items-center justify-between gap-4 shadow-glass transition-all duration-300">
-          {/* Brand Logo & Name */}
-          <Link to="/" className="flex items-center gap-3 shrink-0 group">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-pink via-brand-purple to-brand-blue p-[1.5px] shadow-sm group-hover:scale-105 transition-transform">
-              <div className="w-full h-full bg-white rounded-[10px] flex items-center justify-center">
-                <span
-                  className="material-symbols-outlined text-transparent bg-clip-text bg-gradient-to-r from-brand-pink to-brand-purple text-[22px]"
-                  style={{ fontVariationSettings: "'FILL' 1" }}
-                >
-                  auto_awesome
-                </span>
-              </div>
-            </div>
-            <div className="flex flex-col">
-              <div className="flex items-center gap-1.5">
-                <span className="font-display font-extrabold text-xl tracking-tight text-brand-navy">
-                  Kaar<span className="bg-gradient-to-r from-brand-pink via-brand-purple to-brand-blue bg-clip-text text-transparent">ya</span>
-                </span>
-                <span className="w-1.5 h-1.5 rounded-full bg-brand-cyan animate-pulse"></span>
-              </div>
-              <span className="text-[10px] uppercase font-bold tracking-wider text-brand-slate">Where Skills Meet Opportunity</span>
-            </div>
-          </Link>
-
-          {/* Desktop Navigation Links */}
-          <nav className="hidden lg:flex items-center gap-1 bg-white/60 p-1.5 rounded-xl border border-white/80 shadow-inner">
-            <Link
-              to="/"
-              className="px-4 py-1.5 rounded-lg text-xs font-semibold text-white bg-gradient-to-r from-brand-pink to-brand-purple shadow-sm transition-all"
-            >
-              Home
-            </Link>
-            <a
-              href="#find-professionals"
-              className="px-3.5 py-1.5 rounded-lg text-xs font-semibold text-brand-slate hover:text-brand-navy hover:bg-white/80 transition-all"
-            >
-              Find Professionals
-            </a>
-            <a
-              href="#how-it-works"
-              className="px-3.5 py-1.5 rounded-lg text-xs font-semibold text-brand-slate hover:text-brand-navy hover:bg-white/80 transition-all"
-            >
-              How It Works
-            </a>
-            <a
-              href="#for-workers"
-              className="px-3.5 py-1.5 rounded-lg text-xs font-semibold text-brand-slate hover:text-brand-navy hover:bg-white/80 transition-all"
-            >
-              For Workers
-            </a>
-            <a
-              href="#about"
-              className="px-3.5 py-1.5 rounded-lg text-xs font-semibold text-brand-slate hover:text-brand-navy hover:bg-white/80 transition-all"
-            >
-              About
-            </a>
-          </nav>
-
-          {/* Right Header Actions */}
-          <div className="flex items-center gap-2.5 shrink-0">
-            {/* Location Pill */}
-            <button
-              type="button"
-              className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-purple-50/70 border border-purple-100/80 text-xs font-semibold text-brand-purple hover:bg-purple-100/60 transition-colors"
-            >
-              <span className="material-symbols-outlined text-[16px] text-brand-pink">location_on</span>
-              <span>Mumbai, MH</span>
-              <span className="material-symbols-outlined text-[14px]">expand_more</span>
-            </button>
-
-            {/* Notification Bell with Active Ping */}
-            <button
-              type="button"
-              aria-label="Notifications"
-              className="relative w-9 h-9 rounded-xl bg-white/80 border border-slate-200/70 flex items-center justify-center text-brand-slate hover:text-brand-navy hover:bg-white transition-all shadow-sm"
-            >
-              <span className="material-symbols-outlined text-[20px]">notifications</span>
-              <span className="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-brand-pink ring-2 ring-white"></span>
-            </button>
-
-            {/* Sign In Button */}
-            <button
-              type="button"
-              className="hidden sm:inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-bold text-brand-navy bg-white hover:bg-slate-50 border border-slate-200/80 shadow-sm transition-all"
-            >
-              <span>Sign In</span>
-            </button>
-
-            {/* User Avatar Gradient Pill */}
-            <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-brand-pink via-brand-purple to-brand-blue p-[2px] shadow-sm cursor-pointer hover:scale-105 transition-transform">
-              <div className="w-full h-full bg-white rounded-[10px] flex items-center justify-center text-brand-purple">
-                <span className="material-symbols-outlined text-[20px]">account_circle</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </header>
-
       {/* MAIN BODY */}
-      <main className="w-full pt-28 pb-16 relative z-10">
+      <main className="w-full pt-6 sm:pt-8 pb-16 relative z-10">
         {/* HERO SECTION */}
         <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 pb-12 w-full">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center">
@@ -553,7 +471,10 @@ export default function LandingPage() {
           {/* 4-Column Professional Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {/* Professional 1: Rahul Sharma */}
-            <div className="glass-surface rounded-3xl p-5 aurora-card-hover border border-white flex flex-col justify-between group">
+            <div
+              className="glass-surface rounded-3xl p-5 aurora-card-hover border border-white flex flex-col justify-between group cursor-pointer"
+              onClick={() => handleOpenWorkerModal('w-rahul')}
+            >
               <div>
                 {/* Image & Favorite Bar */}
                 <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden mb-4 bg-slate-100">
@@ -565,9 +486,9 @@ export default function LandingPage() {
                   />
                   <button
                     type="button"
-                    onClick={() => toggleFavorite('w-rahul')}
+                    onClick={(e) => toggleFavorite('w-rahul', e)}
                     aria-label="Favorite Rahul Sharma"
-                    className={`absolute top-2.5 right-2.5 w-8 h-8 rounded-full bg-white/90 backdrop-blur-md flex items-center justify-center shadow-sm transition-colors ${
+                    className={`absolute top-2.5 right-2.5 w-8 h-8 rounded-full bg-white/90 backdrop-blur-md flex items-center justify-center shadow-sm transition-colors z-10 ${
                       favorites['w-rahul'] ? 'text-brand-pink' : 'text-slate-400 hover:text-brand-pink'
                     }`}
                   >
@@ -587,7 +508,9 @@ export default function LandingPage() {
                 {/* Profile Info */}
                 <div className="flex items-start justify-between gap-2 mb-2">
                   <div>
-                    <h3 className="font-display font-extrabold text-base text-brand-navy leading-snug">Rahul Sharma</h3>
+                    <h3 className="font-display font-extrabold text-base text-brand-navy leading-snug group-hover:text-primary transition-colors">
+                      Rahul Sharma
+                    </h3>
                     <p className="text-xs text-brand-slate font-medium">Master Plumber · 8 yrs exp</p>
                   </div>
                   <div className="flex items-center gap-1 bg-amber-50 px-2 py-0.5 rounded-lg border border-amber-100 shrink-0">
@@ -625,17 +548,21 @@ export default function LandingPage() {
                     ₹249<span className="text-xs font-normal text-brand-slate">/hr</span>
                   </p>
                 </div>
-                <Link
-                  to="/professionals/w-rahul"
-                  className="px-4 py-2 rounded-xl bg-white hover:bg-slate-50 border border-slate-200/90 text-xs font-bold text-brand-navy group-hover:bg-gradient-to-r group-hover:from-brand-pink group-hover:to-brand-purple group-hover:text-white group-hover:border-transparent transition-all shadow-sm"
+                <button
+                  type="button"
+                  onClick={(e) => handleOpenWorkerModal('w-rahul', e)}
+                  className="px-4 py-2 rounded-xl bg-white hover:bg-slate-50 border border-slate-200/90 text-xs font-bold text-brand-navy group-hover:bg-gradient-to-r group-hover:from-brand-pink group-hover:to-brand-purple group-hover:text-white group-hover:border-transparent transition-all shadow-sm cursor-pointer"
                 >
                   View Profile
-                </Link>
+                </button>
               </div>
             </div>
 
             {/* Professional 2: Priya Nair */}
-            <div className="glass-surface rounded-3xl p-5 aurora-card-hover border border-white flex flex-col justify-between group">
+            <div
+              className="glass-surface rounded-3xl p-5 aurora-card-hover border border-white flex flex-col justify-between group cursor-pointer"
+              onClick={() => handleOpenWorkerModal('w-priya')}
+            >
               <div>
                 {/* Image & Favorite Bar */}
                 <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden mb-4 bg-slate-100">
@@ -647,9 +574,9 @@ export default function LandingPage() {
                   />
                   <button
                     type="button"
-                    onClick={() => toggleFavorite('w-priya')}
+                    onClick={(e) => toggleFavorite('w-priya', e)}
                     aria-label="Favorite Priya Nair"
-                    className={`absolute top-2.5 right-2.5 w-8 h-8 rounded-full bg-white/90 backdrop-blur-md flex items-center justify-center shadow-sm transition-colors ${
+                    className={`absolute top-2.5 right-2.5 w-8 h-8 rounded-full bg-white/90 backdrop-blur-md flex items-center justify-center shadow-sm transition-colors z-10 ${
                       favorites['w-priya'] ? 'text-brand-pink' : 'text-slate-400 hover:text-brand-pink'
                     }`}
                   >
@@ -669,7 +596,9 @@ export default function LandingPage() {
                 {/* Profile Info */}
                 <div className="flex items-start justify-between gap-2 mb-2">
                   <div>
-                    <h3 className="font-display font-extrabold text-base text-brand-navy leading-snug">Priya Nair</h3>
+                    <h3 className="font-display font-extrabold text-base text-brand-navy leading-snug group-hover:text-primary transition-colors">
+                      Priya Nair
+                    </h3>
                     <p className="text-xs text-brand-slate font-medium">Deep Cleaning · Eco-Friendly</p>
                   </div>
                   <div className="flex items-center gap-1 bg-amber-50 px-2 py-0.5 rounded-lg border border-amber-100 shrink-0">
@@ -704,17 +633,21 @@ export default function LandingPage() {
                     ₹399<span className="text-xs font-normal text-brand-slate">/room</span>
                   </p>
                 </div>
-                <Link
-                  to="/professionals/w-priya"
-                  className="px-4 py-2 rounded-xl bg-white hover:bg-slate-50 border border-slate-200/90 text-xs font-bold text-brand-navy group-hover:bg-gradient-to-r group-hover:from-brand-pink group-hover:to-brand-purple group-hover:text-white group-hover:border-transparent transition-all shadow-sm"
+                <button
+                  type="button"
+                  onClick={(e) => handleOpenWorkerModal('w-priya', e)}
+                  className="px-4 py-2 rounded-xl bg-white hover:bg-slate-50 border border-slate-200/90 text-xs font-bold text-brand-navy group-hover:bg-gradient-to-r group-hover:from-brand-pink group-hover:to-brand-purple group-hover:text-white group-hover:border-transparent transition-all shadow-sm cursor-pointer"
                 >
                   View Profile
-                </Link>
+                </button>
               </div>
             </div>
 
             {/* Professional 3: Amit Kumar */}
-            <div className="glass-surface rounded-3xl p-5 aurora-card-hover border border-white flex flex-col justify-between group">
+            <div
+              className="glass-surface rounded-3xl p-5 aurora-card-hover border border-white flex flex-col justify-between group cursor-pointer"
+              onClick={() => handleOpenWorkerModal('w-amit')}
+            >
               <div>
                 {/* Image & Favorite Bar */}
                 <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden mb-4 bg-slate-100">
@@ -726,9 +659,9 @@ export default function LandingPage() {
                   />
                   <button
                     type="button"
-                    onClick={() => toggleFavorite('w-amit')}
+                    onClick={(e) => toggleFavorite('w-amit', e)}
                     aria-label="Favorite Amit Kumar"
-                    className={`absolute top-2.5 right-2.5 w-8 h-8 rounded-full bg-white/90 backdrop-blur-md flex items-center justify-center shadow-sm transition-colors ${
+                    className={`absolute top-2.5 right-2.5 w-8 h-8 rounded-full bg-white/90 backdrop-blur-md flex items-center justify-center shadow-sm transition-colors z-10 ${
                       favorites['w-amit'] ? 'text-brand-pink' : 'text-slate-400 hover:text-brand-pink'
                     }`}
                   >
@@ -748,7 +681,9 @@ export default function LandingPage() {
                 {/* Profile Info */}
                 <div className="flex items-start justify-between gap-2 mb-2">
                   <div>
-                    <h3 className="font-display font-extrabold text-base text-brand-navy leading-snug">Amit Kumar</h3>
+                    <h3 className="font-display font-extrabold text-base text-brand-navy leading-snug group-hover:text-primary transition-colors">
+                      Amit Kumar
+                    </h3>
                     <p className="text-xs text-brand-slate font-medium">Certified Electrician · Wiring &amp; MCB</p>
                   </div>
                   <div className="flex items-center gap-1 bg-amber-50 px-2 py-0.5 rounded-lg border border-amber-100 shrink-0">
@@ -783,17 +718,21 @@ export default function LandingPage() {
                     ₹199<span className="text-xs font-normal text-brand-slate">/hr</span>
                   </p>
                 </div>
-                <Link
-                  to="/professionals/w-amit"
-                  className="px-4 py-2 rounded-xl bg-white hover:bg-slate-50 border border-slate-200/90 text-xs font-bold text-brand-navy group-hover:bg-gradient-to-r group-hover:from-brand-pink group-hover:to-brand-purple group-hover:text-white group-hover:border-transparent transition-all shadow-sm"
+                <button
+                  type="button"
+                  onClick={(e) => handleOpenWorkerModal('w-amit', e)}
+                  className="px-4 py-2 rounded-xl bg-white hover:bg-slate-50 border border-slate-200/90 text-xs font-bold text-brand-navy group-hover:bg-gradient-to-r group-hover:from-brand-pink group-hover:to-brand-purple group-hover:text-white group-hover:border-transparent transition-all shadow-sm cursor-pointer"
                 >
                   View Profile
-                </Link>
+                </button>
               </div>
             </div>
 
             {/* Professional 4: Vikram Patel */}
-            <div className="glass-surface rounded-3xl p-5 aurora-card-hover border border-white flex flex-col justify-between group">
+            <div
+              className="glass-surface rounded-3xl p-5 aurora-card-hover border border-white flex flex-col justify-between group cursor-pointer"
+              onClick={() => handleOpenWorkerModal('w-vikram')}
+            >
               <div>
                 {/* Image & Favorite Bar */}
                 <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden mb-4 bg-slate-100">
@@ -805,9 +744,9 @@ export default function LandingPage() {
                   />
                   <button
                     type="button"
-                    onClick={() => toggleFavorite('w-vikram')}
+                    onClick={(e) => toggleFavorite('w-vikram', e)}
                     aria-label="Favorite Vikram Patel"
-                    className={`absolute top-2.5 right-2.5 w-8 h-8 rounded-full bg-white/90 backdrop-blur-md flex items-center justify-center shadow-sm transition-colors ${
+                    className={`absolute top-2.5 right-2.5 w-8 h-8 rounded-full bg-white/90 backdrop-blur-md flex items-center justify-center shadow-sm transition-colors z-10 ${
                       favorites['w-vikram'] ? 'text-brand-pink' : 'text-slate-400 hover:text-brand-pink'
                     }`}
                   >
@@ -827,7 +766,9 @@ export default function LandingPage() {
                 {/* Profile Info */}
                 <div className="flex items-start justify-between gap-2 mb-2">
                   <div>
-                    <h3 className="font-display font-extrabold text-base text-brand-navy leading-snug">Vikram Patel</h3>
+                    <h3 className="font-display font-extrabold text-base text-brand-navy leading-snug group-hover:text-primary transition-colors">
+                      Vikram Patel
+                    </h3>
                     <p className="text-xs text-brand-slate font-medium">Senior Carpenter · Custom Furniture</p>
                   </div>
                   <div className="flex items-center gap-1 bg-amber-50 px-2 py-0.5 rounded-lg border border-amber-100 shrink-0">
@@ -861,12 +802,13 @@ export default function LandingPage() {
                     ₹299<span className="text-xs font-normal text-brand-slate">/hr</span>
                   </p>
                 </div>
-                <Link
-                  to="/professionals/w-vikram"
-                  className="px-4 py-2 rounded-xl bg-white hover:bg-slate-50 border border-slate-200/90 text-xs font-bold text-brand-navy group-hover:bg-gradient-to-r group-hover:from-brand-pink group-hover:to-brand-purple group-hover:text-white group-hover:border-transparent transition-all shadow-sm"
+                <button
+                  type="button"
+                  onClick={(e) => handleOpenWorkerModal('w-vikram', e)}
+                  className="px-4 py-2 rounded-xl bg-white hover:bg-slate-50 border border-slate-200/90 text-xs font-bold text-brand-navy group-hover:bg-gradient-to-r group-hover:from-brand-pink group-hover:to-brand-purple group-hover:text-white group-hover:border-transparent transition-all shadow-sm cursor-pointer"
                 >
                   View Profile
-                </Link>
+                </button>
               </div>
             </div>
           </div>
@@ -1083,6 +1025,16 @@ export default function LandingPage() {
           </div>
         </div>
       </footer>
+
+      {/* WORKER FULL PROFILE MODAL OVERLAY */}
+      <WorkerProfileModal
+        worker={activeModalWorker}
+        isOpen={Boolean(activeModalWorker)}
+        onClose={() => setActiveModalWorker(null)}
+        selectedSlot={selectedTimeSlot}
+        onSelectSlot={setSelectedTimeSlot}
+      />
     </div>
   );
 }
+

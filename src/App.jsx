@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Layout from './components/layout/Layout';
+import ContentLayout from './components/layout/ContentLayout';
 import LandingPage from './pages/LandingPage';
 import FindProfessionals from './pages/FindProfessionals';
 import WorkerProfile from './pages/WorkerProfile';
@@ -17,20 +18,22 @@ export default function App() {
   return (
     <BrowserRouter>
       <Routes>
-        {/* Dedicated Stitch edge-to-edge layouts */}
-        <Route path="/" element={<LandingPage />} />
-        <Route path="/professionals" element={<FindProfessionals />} />
-        <Route path="/post-job" element={<PostJob />} />
-        <Route path="/compare-offers" element={<CompareOffers />} />
-        <Route path="/bookings/:id" element={<BookingDetails />} />
-        <Route path="/my-bookings" element={<MyBookings />} />
-        <Route path="/worker-dashboard" element={<WorkerDashboard />} />
-        <Route path="/messages" element={<Messages />} />
-
-        {/* Internal pages wrapped in standard application layout */}
+        {/* Universal Navbar Layout mounted across every application page */}
         <Route element={<Layout />}>
-          <Route path="professionals/:id" element={<WorkerProfile />} />
-          <Route path="*" element={<NotFound />} />
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/professionals" element={<FindProfessionals />} />
+          <Route path="/post-job" element={<PostJob />} />
+          <Route path="/compare-offers" element={<CompareOffers />} />
+          <Route path="/bookings/:id" element={<BookingDetails />} />
+          <Route path="/my-bookings" element={<MyBookings />} />
+          <Route path="/worker-dashboard" element={<WorkerDashboard />} />
+          <Route path="/messages" element={<Messages />} />
+
+          {/* Framed content pages wrapped with max-width container and shared Footer */}
+          <Route element={<ContentLayout />}>
+            <Route path="/professionals/:id" element={<WorkerProfile />} />
+            <Route path="*" element={<NotFound />} />
+          </Route>
         </Route>
       </Routes>
       <DemoModeToggle />

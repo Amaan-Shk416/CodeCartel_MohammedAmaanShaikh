@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import { Link, useSearchParams } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 import { MOCK_WORKERS } from '../data/mockData';
 import WorkerProfileModal from '../components/workers/WorkerProfileModal';
 
@@ -296,100 +296,9 @@ export default function FindProfessionals() {
   return (
     <div className="bg-background font-body-md text-on-surface antialiased selection:bg-primary-fixed selection:text-primary min-h-screen relative overflow-x-hidden">
       {/* ------------------------------------------------------------- */}
-      {/* 1. TOP HEADER (Floating Frosted Glass Desktop Header)         */}
-      {/* ------------------------------------------------------------- */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-surface-container-lowest/85 backdrop-blur-xl border-b border-surface-container-high/60 shadow-[0_12px_32px_-4px_rgba(59,73,223,0.06),0_4px_12px_-2px_rgba(225,29,116,0.04)]">
-        <div className="h-20 max-w-[1280px] mx-auto px-6 lg:px-8 flex items-center justify-between gap-4">
-          {/* Logo + Navigation Links */}
-          <div className="flex items-center gap-8">
-            <Link to="/" className="flex items-center gap-2.5 group">
-              <div className="w-10 h-10 rounded-xl aurora-gradient-btn flex items-center justify-center text-white shadow-[0_4px_16px_rgba(225,29,116,0.28)] transition-transform group-hover:scale-105">
-                <span className="material-symbols-outlined text-[22px]">handyman</span>
-              </div>
-              <div className="flex flex-col">
-                <span className="font-headline-sm text-[20px] font-extrabold text-on-surface tracking-tight leading-none group-hover:text-primary transition-colors">
-                  Kaarya
-                </span>
-                <span className="font-label-sm text-[9.5px] uppercase font-bold text-on-surface-variant tracking-wider leading-tight mt-0.5">
-                  Where Skills Meet Opportunity
-                </span>
-              </div>
-            </Link>
-
-            <nav className="hidden xl:flex items-center gap-1.5 p-1 rounded-full bg-surface-container-low/80">
-              <Link
-                to="/"
-                className="px-4 py-2 rounded-full font-label-lg text-[13px] text-on-surface-variant hover:text-on-surface transition-all"
-              >
-                Home
-              </Link>
-              <Link
-                to="/professionals"
-                className="px-4 py-2 rounded-full font-label-lg text-[13px] transition-all aurora-pill-active text-white font-bold shadow-[0_4px_14px_rgba(225,29,116,0.25)]"
-              >
-                Find Professionals
-              </Link>
-              <a
-                href="/#how-it-works"
-                className="px-4 py-2 rounded-full font-label-lg text-[13px] text-on-surface-variant hover:text-on-surface transition-all"
-              >
-                How It Works
-              </a>
-              <Link
-                to="/worker-dashboard"
-                className="px-4 py-2 rounded-full font-label-lg text-[13px] text-on-surface-variant hover:text-on-surface transition-all"
-              >
-                For Workers
-              </Link>
-              <a
-                href="/#about"
-                className="px-4 py-2 rounded-full font-label-lg text-[13px] text-on-surface-variant hover:text-on-surface transition-all"
-              >
-                About
-              </a>
-            </nav>
-          </div>
-
-          {/* Right Toolbar: Quick Search, Location, Alerts, Avatar */}
-          <div className="flex items-center gap-3">
-            <div className="hidden lg:flex items-center h-10 px-3.5 rounded-full bg-surface-container-low hover:bg-surface-container transition-colors">
-              <span className="material-symbols-outlined text-secondary text-[20px] mr-2">search</span>
-              <input
-                className="bg-transparent border-none outline-none font-body-sm text-[13px] text-on-surface placeholder:text-on-surface-variant w-40 focus:w-52 transition-all"
-                placeholder="Quick search..."
-                type="text"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-              />
-            </div>
-
-            <div className="hidden sm:flex items-center gap-1.5 h-10 px-3.5 rounded-full bg-surface-container-lowest border border-surface-container shadow-sm">
-              <span className="material-symbols-outlined text-primary text-[18px]">location_on</span>
-              <span className="font-label-md text-[13px] text-on-surface font-semibold">Mumbai, MH</span>
-            </div>
-
-            <button
-              aria-label="Notifications"
-              className="relative w-10 h-10 rounded-full bg-surface-container-low hover:bg-surface-container flex items-center justify-center text-on-surface-variant transition-colors"
-              type="button"
-            >
-              <span className="material-symbols-outlined text-[20px]">notifications</span>
-              <span className="absolute top-2.5 right-2.5 w-2 h-2 rounded-full bg-primary ring-2 ring-surface-container-lowest"></span>
-            </button>
-
-            <Link to="/professionals/w-rahul" className="flex items-center" title="User Profile">
-              <div className="w-9 h-9 rounded-full bg-gradient-to-tr from-secondary to-tertiary flex items-center justify-center text-white ring-2 ring-white shadow-sm font-label-md text-xs font-bold">
-                KP
-              </div>
-            </Link>
-          </div>
-        </div>
-      </header>
-
-      {/* ------------------------------------------------------------- */}
       {/* MAIN CONTAINER                                                */}
       {/* ------------------------------------------------------------- */}
-      <main className="w-full pt-28 pb-16 bg-background min-h-screen relative overflow-hidden">
+      <main className="w-full pt-6 sm:pt-8 pb-16 bg-background min-h-screen relative overflow-hidden">
         {/* Ambient Aurora Glow Backdrops */}
         <div className="pointer-events-none absolute -top-40 left-1/3 w-[650px] h-[650px] rounded-full bg-gradient-to-tr from-[#FF1493]/10 via-[#8B00FF]/12 to-[#0080FF]/10 blur-[130px] -z-10"></div>
         <div className="pointer-events-none absolute top-[500px] -right-28 w-[500px] h-[500px] rounded-full bg-gradient-to-br from-[#0080FF]/10 via-[#8B00FF]/8 to-[#FF1493]/10 blur-[140px] -z-10"></div>

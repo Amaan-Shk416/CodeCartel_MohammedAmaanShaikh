@@ -346,7 +346,7 @@ export default function Messages() {
   const totalUnread = conversations.reduce((acc, c) => acc + (c.unreadCount || 0), 0);
 
   return (
-    <div className="bg-[#F8F9FF] font-sans text-brand-dark antialiased h-screen overflow-hidden flex items-center justify-center relative p-2 sm:p-4 md:p-6 selection:bg-brand-pink/20 selection:text-brand-purple">
+    <div className="bg-[#F8F9FF] font-sans text-brand-dark antialiased min-h-[calc(100vh-4rem)] flex-1 overflow-hidden flex items-center justify-center relative p-2 sm:p-4 md:p-6 selection:bg-brand-pink/20 selection:text-brand-purple">
       {/* Subtle Ambient Aurora Blur Spots */}
       <div className="pointer-events-none fixed inset-0 overflow-hidden z-0">
         <div className="absolute -top-32 -left-32 w-96 h-96 rounded-full bg-[#FF1493]/15 blur-3xl" />
@@ -355,7 +355,7 @@ export default function Messages() {
       </div>
 
       {/* The Isolated 2-Panel Messaging Workspace Container */}
-      <div className="relative z-10 w-full max-w-7xl h-[95vh] md:h-[92vh] max-h-[920px] rounded-2xl md:rounded-3xl border border-purple-100/70 bg-white shadow-2xl shadow-indigo-500/10 overflow-hidden flex flex-col md:flex-row">
+      <div className="relative z-10 w-full max-w-7xl h-[calc(100vh-6rem)] min-h-[580px] max-h-[900px] rounded-2xl md:rounded-3xl border border-purple-100/70 bg-white shadow-2xl shadow-indigo-500/10 overflow-hidden flex flex-col md:flex-row">
         
         {/* LEFT PANEL: Conversations (~30% width, min-w-[320px] max-w-[380px]) */}
         <aside

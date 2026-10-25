@@ -71,6 +71,7 @@ export default function WorkerProfileModal({
     worker.reliabilityRecord ||
     `${worker.experienceYears || 5} Years in Trade • 99.2% on-time resolution • Zero complaint escalation`;
   const captions = worker.portfolioCaptions || DEFAULT_PORTFOLIO_CAPTIONS;
+  const portfolioPhotos = worker.portfolio || worker.workSamples || WORK_SAMPLES;
   const firstName = worker.name ? worker.name.split(' ')[0] : 'Professional';
 
   // Customer reviews resolution
@@ -109,12 +110,12 @@ export default function WorkerProfileModal({
       aria-modal="true"
       aria-labelledby="modal-worker-name"
       id="worker-profile-modal"
-      className="fixed inset-0 z-50 overflow-y-auto bg-slate-900/60 backdrop-blur-md flex items-center justify-center p-4 sm:p-6 transition-all focus:outline-none"
+      className="fixed inset-0 z-[100] overflow-y-auto bg-slate-900/60 backdrop-blur-md flex items-center justify-center p-4 sm:p-6 transition-all focus:outline-none"
       onClick={handleBackdropClick}
     >
       {/* Modal Card Shell: Solid white opaque surface with subtle border and deep shadow */}
       <div
-        className="relative w-full max-w-5xl rounded-3xl bg-white border border-surface-container shadow-[0_24px_70px_rgba(0,0,0,0.25),0_0_80px_rgba(225,29,116,0.15)] overflow-hidden transition-all transform scale-100 my-8"
+        className="relative w-full max-w-5xl rounded-3xl bg-white border border-surface-container shadow-[0_24px_70px_rgba(0,0,0,0.25),0_0_80px_rgba(225,29,116,0.15)] overflow-hidden transition-all transform scale-100 my-auto max-h-[92vh] flex flex-col"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Close Button */}
@@ -123,16 +124,16 @@ export default function WorkerProfileModal({
           id="close-modal-btn"
           type="button"
           onClick={onClose}
-          className="absolute top-4 right-4 z-20 w-10 h-10 rounded-full bg-surface-container-low hover:bg-surface-container text-[#0b1c30] border border-surface-container flex items-center justify-center transition-colors shadow-sm"
+          className="absolute top-4 right-4 z-20 w-10 h-10 rounded-full bg-white/90 hover:bg-white text-[#0b1c30] border border-surface-container flex items-center justify-center transition-colors shadow-sm cursor-pointer"
         >
           <span className="material-symbols-outlined text-[20px]">close</span>
         </button>
 
         {/* Aurora Top Ambient Ribbon */}
-        <div className="h-2.5 w-full aurora-gradient-btn" />
+        <div className="h-2.5 w-full aurora-gradient-btn shrink-0" />
 
         {/* Modal Main Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 max-h-[85vh] overflow-y-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-12 flex-1 overflow-y-auto">
           {/* ========================================================= */}
           {/* LEFT COLUMN: Identity, Bio, Skills, Portfolio & Reviews   */}
           {/* ========================================================= */}
@@ -254,7 +255,7 @@ export default function WorkerProfileModal({
               </div>
 
               <div className="grid grid-cols-3 gap-3 mt-2.5">
-                {WORK_SAMPLES.map((photoUrl, idx) => (
+                {portfolioPhotos.map((photoUrl, idx) => (
                   <div
                     key={idx}
                     className="relative aspect-video rounded-xl overflow-hidden bg-surface-container-high border border-surface-container shadow-sm group cursor-pointer"
